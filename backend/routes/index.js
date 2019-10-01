@@ -9,8 +9,8 @@ const Team = require('../models/Team')
 /* GET home page */
 router.get('/', (req, res, next) => {
   Game.find()
-  Event.find()
-  Team.find()
+  Event.find().limit(5)
+  Team.find().limit(5)
   res.status(200).json({ msg: 'all things' });
 });
 
@@ -50,7 +50,7 @@ router.get('/game', (req,res,next) =>{
 })
 
 
-router.get('/gameall', (req,res,next) =>{
+router.get('/gamesall', (req,res,next) =>{
   Game.find()
   .then((game) => res.status(200).json({ game }))
   .catch((err) => console.log(err));
