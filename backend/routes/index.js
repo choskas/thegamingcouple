@@ -5,6 +5,7 @@ const passport = require('../config/passport')
 const Event = require('../models/Event')
 const Game = require('../models/Game')
 const Team = require('../models/Team')
+const uploadCloud = require ('../config/cloudinary')
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -36,9 +37,12 @@ router.get('/profile', isAuth, (req,res,next) =>{
   .catch((err)=> res.status(500).json({err}))
 }) 
 
-router.get('/profileedit', isAuth, (req,res,next)=>{
+router.post('/edit', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+  if(req.file){
+    req.body.img = req.file.secure_url
+  }
   User.findByIdAndUpdate(req.user._id, {...req.body})
-  .then((user) => res.status(200).json({ user }))
+  .then((user) => res.status(200).json({ message: 'changes updated', user: user }))
   .catch((err) => console.log(err))
 })
 

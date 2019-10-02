@@ -11,10 +11,7 @@ const userSchema = new Schema(
       type: String,
       unique: true
     },
-    game: {
-      ref: 'Game',
-      type: Schema.Types.ObjectId
-    },
+    game: String,
     img:{
       type: String,
       default: 'https://www.uic.mx/posgrados/files/2018/05/default-user.png'

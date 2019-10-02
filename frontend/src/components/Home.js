@@ -7,10 +7,10 @@ import {
 import {
     Link
 } from 'react-router-dom'
-import HOME_SERVICE from '../services/allthings'
 import axios from 'axios'
-import {Layout, Menu, Carousel, Card} from 'antd'
-const {Header} = Layout
+import {Layout, Menu, Carousel, Card, Icon, Avatar} from 'antd'
+import {TwitchStream} from 'react-twitch-stream'
+const {Header, Footer} = Layout
 const {Meta} = Card
 class Home extends Component {
 
@@ -54,7 +54,7 @@ class Home extends Component {
               >
                 <Menu.Item key="1">Home</Menu.Item>
                 <Menu.Item key="2">Teams</Menu.Item>
-                <Menu.Item key="3">Register</Menu.Item>
+                <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
                 <Menu.Item key="4"> 
             </Menu.Item>
                
@@ -88,23 +88,49 @@ class Home extends Component {
    </div>
 
    <h2>Recruitment</h2>
-           
+   <Carousel autoplay>
             {gamesArr.map((oneGame, i) => (
-                <Carousel>
+         
                 <Card key={i}
     hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src={oneGame.img} style={{height: '20vh'}}  />}
+  
+    cover={<img alt="example" src={oneGame.img} style={{ height: '20vh' , width: '20vw'}}  />}
   >
     <Meta key={i} title= {oneGame.name} description={oneGame.playgame} />
   
   </Card> 
-                </Carousel>
+ 
             
             ))}
-                
+            </Carousel>   
             
+<h2>Events</h2>
+
+<Card
+    style={{ width: 300 }}
+    cover={
+      <img
+        alt="example"
+        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+      />
+    }
+    actions={[
+    
+      <Icon type="ellipsis" key="ellipsis" />,
+    ]}
+  >
+    <Meta
+      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
+      title="Card title"
+      description="This is the description"
+    />
+  </Card>,
+
+  <h2>Live Stream</h2>
+<duv><TwitchStream channelName='Doublelift' autoPlay muted/></duv>
             
+
+  <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
             </div>
             
         )

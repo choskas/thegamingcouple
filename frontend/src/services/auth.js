@@ -12,6 +12,9 @@ const AUTH_SERVICE = {
   },
   logOut: async () => {
     return await SERVICE.get('/logout');
+  },
+  edit: async (form) =>{
+    return await SERVICE.post('/edit', form)
   }
 };
 
