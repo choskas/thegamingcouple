@@ -14,9 +14,11 @@ class MyProvider extends Component {
   };
 
   logOut = () => {
+    console.log('<<<<<<<<<<<estaaaaaaaaas mamadaaaaaaas')
     AUTH_SERVICE.logOut()
       .then((response) => {
-        
+        localStorage.clear()
+        console.log(response)
         this.setState({ loggedUser: null });
       })
       .catch((err) => console.log(err));
@@ -27,9 +29,9 @@ class MyProvider extends Component {
   }
 
   render() {
-    const { state, logUser, logOut, keepTeam } = this;
+    const { state, logUser, keepTeam, logOut } = this;
     return (
-      <MyContext.Provider value={{ state, logUser, logOut, keepTeam }}>
+      <MyContext.Provider value={{ state, logUser, keepTeam, logOut }}>
         {this.props.children}
       </MyContext.Provider>
     );

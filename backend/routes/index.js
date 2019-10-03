@@ -33,7 +33,7 @@ router.get('/logout', (req,res,next)=>{
 })
 
 router.get('/profile', isAuth, (req,res,next) =>{
-  User.findById(req.user._id)
+  User.findById(req.user.id)
   .then((user)=> req.status(200).json({user}))
   .catch((err)=> res.status(500).json({err}))
 }) 
@@ -107,10 +107,10 @@ router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>
     req.body.img = req.file.secure_url
   }
   console.log('sdfsdfsdfdfelelele',req.body)
-  Team.findOneAndUpdate(req.params.id, {...req.body}, {new: true})
+  Team.findByIdAndUpdate(req.params.id, {...req.body}, {new: true})
   
   .then((team) => res.status(200).json({ team }))
-  .catch((err) => res.status(500).json({ err }))
+  .catch((err) => res.status(err).json({ err }))
 })
 
 router.get('/teamregister/:id', (req,res,next)=>{

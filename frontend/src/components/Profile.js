@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { MyContext } from '../context/index';
+import { MyContext } from '../context';
 import {  Button, Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom'
 import AUTH_SERVICE from '../services/auth';
-
 
 const {Header} = Layout
 
@@ -18,28 +17,41 @@ export default class Profile extends Component {
   };
 
 
+
+  
+
+
   componentDidMount() {
-    if (!this.context.state.loggedUser) return this.props.history.push('/login');
-    const userinfo = this.context.state.loggedUser
-    this.setState( userinfo );
-    console.log(userinfo)
-    console.log(this.context.state.loggedUser)
+    
+
+    if (localStorage.user) {
+      let user = JSON.parse(localStorage.user)
+      console.log('sdasdsd', user)
+      this.setState({user})
+     }
+   if (!localStorage.user) return this.props.history.push('/login');
+   //////////////////////////////7777
+  
+///////////////////////////////////////////7
+    // const userinfo = this.context.state.loggedUser
+    // this.setState( userinfo );
+    // console.log('the user infoooo: ', userinfo)
+    
+    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<',this.context.loggedUser)
     AUTH_SERVICE.allTeams()
     .then(({data})=> this.setState({teams: data.teams}))
     .catch((err)=> console.log(err))
   }
 
   
-  
-  
-  logout() {
-    localStorage.clear();
-    window.location.href = '/';
-}
+//   logout() {
+//     localStorage.clear();
+//     window.location.href = '/';
+// }
 
 
   render() {
-    const user = this.state
+    const {user} = this.state
     const {teams} = this.state
     return (
         <div>
@@ -55,8 +67,8 @@ export default class Profile extends Component {
           style={{ lineHeight: '64px' }}
         >
           <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2">Teams</Menu.Item>
-          <Menu.Item key="3" onClick={this.logout}>Logout</Menu.Item>
+          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
+          <Menu.Item key="3" onClick={this.context.logOut}><Link to= "/login">Logout</Link></Menu.Item>
           <Menu.Item key="4"> 
       </Menu.Item>
          

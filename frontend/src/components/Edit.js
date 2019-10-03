@@ -13,8 +13,13 @@ export default class ProfileEdit extends React.Component {
   };
 
   componentDidMount (){
-    this.setState({updateUser: this.context.state.loggedUser})
-    console.log(this.state)
+    //  this.setState({updateUser: this.context.state.loggedUser})
+    //  console.log(this.state)
+    if (localStorage.user) {
+      let updateUser = JSON.parse(localStorage.user)
+      console.log('sdasdsd', updateUser)
+      this.setState({updateUser})
+    }
   }
 
   handleInput = (e) => {
@@ -29,9 +34,10 @@ export default class ProfileEdit extends React.Component {
     
   };
 
+  
   onSubmit = (e) => {
     e.preventDefault()
-    const userinfo = this.context.state.loggedUser
+    const userinfo = this.state.updateUser
     console.log('ejfjfjfjfjfdjfjdjfdjf', userinfo)
    
    
@@ -41,7 +47,7 @@ export default class ProfileEdit extends React.Component {
       AUTH_SERVICE.edit(fd)
         .then(res => {
           console.log(res)
-          this.context.logUser(res.data.user);
+          localStorage.user = JSON.stringify(res.data.user)
           this.props.history.push('/profile')
         })
         .catch(e => console.log(e));

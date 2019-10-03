@@ -82,7 +82,7 @@ class Home extends Component {
     
        {gamesArr.map((oneGame, i) => (
         <div key={i} style={{alignContent: 'center'}}>
-                <img style={{width: '95%', height:'70vh'}} key={i} src={oneGame.img} alt="imgs"/></div>
+                <img style={{width: '95%', height:'65vh'}} key={i} src={oneGame.img} alt="imgs"/></div>
                 ))}
     
    

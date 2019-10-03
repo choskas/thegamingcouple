@@ -12,11 +12,15 @@ const {Header} = Layout
 export default class OneTeam extends Component {
     state= {
         teams: [],
-        user: []
+        user: {}
     }
     
     
     componentDidMount() {
+        if (localStorage.user) {
+            let user = JSON.parse(localStorage.user)
+            this.setState({user})
+           }
         console.log(this.props.match.params.id)
         const id = this.props.match.params.id
         console.log('elidddd', id)
@@ -40,7 +44,7 @@ export default class OneTeam extends Component {
     sendMail = ()=>{
         console.log('el owennnnnnnnneerrrrrr',this.state.teams.owner.email)
         axios
-        .post('http://localhost:3000/api/mail/send',{email: this.state.teams.owner.email, message: 'Wey quiero unirme a tu equipo alv', subject: this.context.logUser.email})
+        .post('http://localhost:3000/api/mail/send',{email: this.state.teams.owner.email, message:`wey ${this.state.user.userName} quiero unirme a tu equipo`, subject: this.state.user.email})
 
     }
   
@@ -48,7 +52,7 @@ export default class OneTeam extends Component {
         const team = this.state.teams
         if(this.state.teams.length===0) return <p>Loading...</p>
         console.log(team)
-        console.log('el logdeddd', this.context.loggedUser)
+        
         return (
             <div>
              <Header>
@@ -64,7 +68,7 @@ export default class OneTeam extends Component {
          >
            <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
            <Menu.Item key="2"><Link to= '/team'>Teams</Link></Menu.Item>
-           <Menu.Item key="3" onClick={this.logout}>Logout</Menu.Item>
+           <Menu.Item key="3">Logout</Menu.Item>
            <Menu.Item key="4"> <Link to= '/profile'>Profile</Link>
        </Menu.Item>
           

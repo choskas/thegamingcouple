@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import { Card, Icon, Avatar, Layout, Menu} from 'antd';
 import {Link} from 'react-router-dom'
+import { MyContext } from '../context';
 
 const {Header} = Layout
 const {Meta} = Card
@@ -11,10 +12,16 @@ export default class Team extends Component {
  
 
 state= {
-    teams: []
+    teams: [],
+    user: {}
 }
 
     componentDidMount() {
+      if (localStorage.user) {
+        let user = JSON.parse(localStorage.user)
+        this.setState({user})
+       }
+      console.log('pto logged: ', this.context.loggedUser)
         axios
             
             .get('http://localhost:3000/api/teamsall')
@@ -49,7 +56,7 @@ state= {
          >
            <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
            <Menu.Item key="2"><Link to= '/team'>Teams</Link></Menu.Item>
-           <Menu.Item key="3" onClick={this.logout}>Logout</Menu.Item>
+           <Menu.Item key="3">Logout</Menu.Item>
            <Menu.Item key="4"> <Link to= '/profile'>Profile</Link>
        </Menu.Item>
           
@@ -83,3 +90,6 @@ state= {
         )
     }
 }
+
+
+Team.contextType = MyContext;

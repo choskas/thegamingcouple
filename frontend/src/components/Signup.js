@@ -90,6 +90,17 @@ class Signup extends Component {
               />
             </Form.Item>
             <Form.Item>
+            <label>Facebook Name</label>
+            <br></br>
+              <Input
+                style={{width: '30vw'}}
+                onChange={this.handleInput}
+                type="text"
+                name="fb"
+                placeholder="Facebook Name"
+              />
+            </Form.Item>
+            <Form.Item>
             <label>Password</label>
             <br></br>
               <Input

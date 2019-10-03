@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Menu, Input, Form, Layout } from 'antd';
+import { Card, Menu, Input, Form, Layout, Button } from 'antd';
 import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 
@@ -33,7 +33,8 @@ class EditTeam extends Component {
        
        
         const fd = new FormData()
-        for (const key in this.state.team){fd.append(key, this.state.team[key])}
+        for (const key in this.state.team){fd.append(key, this.state.team[key])
+        if(key=== 'members'){fd.append(key, this.state.team[key].split(','))}}
         console.log(this.props.match.params.id)
           AUTH_SERVICE.editTeam(fd, this.props.match.params.id)
           
@@ -45,6 +46,7 @@ class EditTeam extends Component {
        
       };
     
+
   
       render() {
         let {team} = this.state
@@ -126,6 +128,7 @@ class EditTeam extends Component {
                 placeholder="Memebers"
               />
             </Form.Item>
+        
            
             <Form.Item>
            <Input style={{width: '20vw'}}  type="submit"  value="Confirm Changes" /> 
