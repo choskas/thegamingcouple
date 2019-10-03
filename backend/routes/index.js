@@ -7,6 +7,7 @@ const Game = require('../models/Game')
 const Team = require('../models/Team')
 const uploadCloud = require ('../config/cloudinary')
 
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   Game.find()
@@ -41,7 +42,7 @@ router.post('/edit', isAuth, uploadCloud.single('img'), (req,res,next)=>{
   if(req.file){
     req.body.img = req.file.secure_url
   }
-  User.findByIdAndUpdate(req.user._id, {...req.body})
+  User.findByIdAndUpdate(req.user._id, {...req.body}, {new: true})
   .then((user) => res.status(200).json({ message: 'changes updated', user: user }))
   .catch((err) => console.log(err))
 })
@@ -59,6 +60,7 @@ router.get('/gamesall', (req,res,next) =>{
   .then((game) => res.status(200).json({ game }))
   .catch((err) => console.log(err));
 })
+
 
 router.get('/eventsall', (req,res,next)=>{
   Event.find()
@@ -78,29 +80,50 @@ router.get('/eventregister', isAuth, (req,res,next)=>{
 })
 
 router.get('/teamsall', (req,res,next)=>{
-  Team.find()
-  .then((team) => res.status(200).json({ team }))
+  Team.find().populate('owner')
+  .then((team) => { console.log(team)
+    res.status(200).json({ team })
+  })
   .catch((err) => console.log(err));
 })
 
 router.get('/team', (req,res,next)=>{
-  Team.findById(req.params._id)
+  Team.findById(req.params._id).populate('owner')
   .then((team) => res.status(200).json({ team }))
   .catch((err) => console.log(err));
 })
 
-router.post('/createteam', (req,res,next)=>{
-  const {team} = req
-  res.status(200).json({team})
+router.post('/createteam', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+  if(req.file){
+    req.body.img = req.file.secure_url
+  }
+  Team.create( {...req.body, owner: req.user._id})
+  .then((team) =>res.status(200).json({team}))
+  .catch((err)=> res.status(500).json({err}))
 })
 
-router.get('/teamregister', isAuth, (req,res,next)=>{
-  User.findById(req.user._id)
-  .then((user) => res.status(200).json({ user }))
+router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+  if(req.file){
+    req.body.img = req.file.secure_url
+  }
+  console.log('sdfsdfsdfdfelelele',req.body)
+  Team.findOneAndUpdate(req.params.id, {...req.body}, {new: true})
+  
+  .then((team) => res.status(200).json({ team }))
   .catch((err) => res.status(500).json({ err }))
 })
 
+router.get('/teamregister/:id', (req,res,next)=>{
+  Team.findById(req.params.id).populate('owner')
+  .then((team) => res.status(200).json({ team }))
+  .catch((err) => res.status(err).json({ err }))
+})
 
+router.get('/oneuserteams', isAuth, (req,res,next)=>{
+  Team.find({owner: req.user.id})
+  .then((teams)=> res.status(200).json({teams}))
+  .catch((err)=> res.status(500).json({err}))
+})
 
 function isAuth(req,res,next){
   req.isAuthenticated() ? next() : res.status(401).json({msg: 'Log in first'})

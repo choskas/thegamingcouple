@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { MyContext } from '../context/index';
 import {  Button, Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom'
+import AUTH_SERVICE from '../services/auth';
+
 
 const {Header} = Layout
 
@@ -11,7 +13,8 @@ export default class Profile extends Component {
   
   state = {
     user: {
-    }
+    },
+    teams: []
   };
 
 
@@ -20,7 +23,10 @@ export default class Profile extends Component {
     const userinfo = this.context.state.loggedUser
     this.setState( userinfo );
     console.log(userinfo)
-    console.log(this.context.state.loggedUser.username)
+    console.log(this.context.state.loggedUser)
+    AUTH_SERVICE.allTeams()
+    .then(({data})=> this.setState({teams: data.teams}))
+    .catch((err)=> console.log(err))
   }
 
   
@@ -34,6 +40,7 @@ export default class Profile extends Component {
 
   render() {
     const user = this.state
+    const {teams} = this.state
     return (
         <div>
         <Header>
@@ -71,6 +78,9 @@ export default class Profile extends Component {
      <Link to="/edit">  <Button type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Edit</Button> </Link>
      <Link to="/team">  <Button type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Join a team</Button> </Link>
      <Link to="/createteam">  <Button type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Create a Team</Button> </Link>
+      {teams.map(team=>(
+        <Link to={`/editteam/${team._id}`}>  <Button  type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Edit Team {team.name}</Button> </Link>
+      ))}
       </div>
       </div>
       

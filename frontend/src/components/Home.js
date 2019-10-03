@@ -27,16 +27,31 @@ class Home extends Component {
             .then(res => {
                 this.setState({
                     games: res.data.game
+                
                 })
                 //console.log(res.data.game[0].name)
             })
             .catch(err => {
                 console.log(err)
             })
+        axios
+        .get('http://localhost:3000/api/teamsall')
+        .then(res => {
+          this.setState({
+              teams: res.data.team
+          
+          })
+          //console.log(res.data.game[0].name)
+      })
+      .catch(err => {
+          console.log(err)
+      })
     }
 
     render() {
         const gamesArr = this.state.games
+        const teamsArr = this.state.teams
+        console.log(teamsArr)
         return ( 
             <div>
             <Layout className="layout">
@@ -53,9 +68,9 @@ class Home extends Component {
                 style={{ lineHeight: '64px' }}
               >
                 <Menu.Item key="1">Home</Menu.Item>
-                <Menu.Item key="2">Teams</Menu.Item>
+                <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
                 <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
-                <Menu.Item key="4"> 
+                <Menu.Item key="4"> <Link to='/login'>Log in</Link>
             </Menu.Item>
                
               </Menu>
@@ -89,14 +104,14 @@ class Home extends Component {
 
    <h2>Recruitment</h2>
    <Carousel autoplay>
-            {gamesArr.map((oneGame, i) => (
+            {teamsArr.map((oneTeam, i) => (
          
                 <Card key={i}
     hoverable
   
-    cover={<img alt="example" src={oneGame.img} style={{ height: '20vh' , width: '20vw'}}  />}
+    cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' , width: '20vw'}}  />}
   >
-    <Meta key={i} title= {oneGame.name} description={oneGame.playgame} />
+    <Meta key={i} title= {oneTeam.name} description={oneTeam.playgame} />
   
   </Card> 
  
@@ -127,7 +142,7 @@ class Home extends Component {
   </Card>,
 
   <h2>Live Stream</h2>
-<duv><TwitchStream channelName='Doublelift' autoPlay muted/></duv>
+<duv><TwitchStream channelName='riotgames' autoPlay muted/></duv>
             
 
   <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>

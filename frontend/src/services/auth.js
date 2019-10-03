@@ -15,7 +15,21 @@ const AUTH_SERVICE = {
   },
   edit: async (form) =>{
     return await SERVICE.post('/edit', form)
+  },
+  createTeam: async (form) => {
+    return await SERVICE.post('/createteam', form)
+  },
+  editTeam: async (form, id)=>{
+    return await SERVICE.post(`/editteam/${id}`, form)
+  },
+  allTeams: async () =>{
+    return await SERVICE.get('/oneuserteams')
+  },
+  oneTeam : async (id)=>{
+    return await SERVICE.get(`/teamregister/${id}`)
   }
+
+  
 };
 
 export default AUTH_SERVICE;

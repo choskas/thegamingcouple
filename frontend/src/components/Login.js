@@ -48,7 +48,7 @@ class Login extends Component {
           style={{ lineHeight: '64px' }}
         >
           <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2">Teams</Menu.Item>
+          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
           <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
           <Menu.Item key="4"> 
       </Menu.Item>

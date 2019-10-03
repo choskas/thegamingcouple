@@ -5,36 +5,49 @@ import { Link } from 'react-router-dom'
 
 const {Header} = Layout
 
-class Signup extends Component {
-  state = {
-    user: {}
-  };
-
-  handleInput = (e) => {
-    const { user } = this.state;
-    const key = e.target.name;
-    user[key] = e.target.value;
-    this.setState({ user });
-   
-  };
-
-  onSubmit = (e) => {
-    e.preventDefault();
-     AUTH_SERVICE.signup(this.state.user)
+class CreateTeam extends Component {
+    state = {
+        team: {}
+      };
     
-      .then((response) => {
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      this.props.history.push('/login')
-  };
-
-
- 
-
-  render() {
+      componentDidMount (){
+        this.setState({team: this.state.team})
+        console.log(this.state)
+      }
+    
+      handleInput = (e) => {
+        const { team } = this.state;
+     
+        if (e.target.files) team.img = e.target.files[0]
+        else {
+        const key = e.target.name;
+        team[key] = e.target.value;
+      }
+        this.setState({ team });
+        
+      };
+    
+      onSubmit = (e) => {
+        e.preventDefault()
+      
+       
+       
+        const fd = new FormData()
+        for (const key in this.state.team){fd.append(key, this.state.team[key])}
+      
+          AUTH_SERVICE.createTeam(fd)
+            .then(res => {
+              console.log(res)
+              this.props.history.push('/team')
+            })
+            .catch(e => console.log(e));
+       
+      };
+    
+  
+      render() {
+        let {team} = this.state
+    
     return (
         <div>
             <Header>
@@ -49,8 +62,8 @@ class Signup extends Component {
            style={{ lineHeight: '64px' }}
          >
            <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-           <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
-           <Menu.Item key="3"><Link to='/login'>Login</Link></Menu.Item>
+           <Menu.Item key="2">Teams</Menu.Item>
+           <Menu.Item key="3"><Link to='/profile'>Profile</Link></Menu.Item>
            <Menu.Item key="4"> 
        </Menu.Item>
           
@@ -71,44 +84,34 @@ class Signup extends Component {
        
         <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
         <div style={{}}>
-        <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Sign Up</p>
+        <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Create a Team</p>
           <Form onSubmit={this.onSubmit}>
-            <Form.Item>
-            <label>Email</label>
+          <Form.Item>
+            <label>Team photo</label>
             <br></br>
-              <Input onChange={this.handleInput} style={{width: '30vw'}} type="email" name="email" placeholder="Email" />
+              <img style={{width: '20vw'}} src={team.img} alt="teampicture"/>
+              <input name="img" type="file" onChange={this.handleInput} />
             </Form.Item>
             <Form.Item>
-            <label>User Name</label>
+            <label>Team Name</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
                 onChange={this.handleInput}
                 type="text"
-                name="userName"
-                placeholder="User name"
+                name="name"
+                placeholder="Name"
               />
             </Form.Item>
             <Form.Item>
-            <label>Password</label>
-            <br></br>
-              <Input
-                style={{width: '30vw'}}
-                onChange={this.handleInput}
-                type="password"
-                name="password"
-                placeholder="Password"
-              />
-            </Form.Item>
-            <Form.Item>
-            <label>Game you play</label>
+            <label>Description</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
                 onChange={this.handleInput}
                 type="text"
-                name="game"
-                placeholder="Counter Strike, League of Legends, Overwatch"
+                name="description"
+                placeholder="Description"
               />
             </Form.Item>
            
@@ -126,4 +129,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default CreateTeam;

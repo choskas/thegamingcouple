@@ -11,6 +11,10 @@ const teamSchema = new Schema(
       type: String
     },
     description: String,
+    owner : {
+      ref: 'User',
+      type: Schema.Types.ObjectId
+    },
     game: {
       ref: 'Game',
       type: Schema.Types.ObjectId

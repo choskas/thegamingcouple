@@ -12,12 +12,19 @@ export default class ProfileEdit extends React.Component {
     updateUser: {}
   };
 
+  componentDidMount (){
+    this.setState({updateUser: this.context.state.loggedUser})
+    console.log(this.state)
+  }
+
   handleInput = (e) => {
     const { updateUser } = this.state;
  
     if (e.target.files) updateUser.img = e.target.files[0]
+    else {
     const key = e.target.name;
     updateUser[key] = e.target.value;
+  }
     this.setState({ updateUser });
     
   };
@@ -25,31 +32,34 @@ export default class ProfileEdit extends React.Component {
   onSubmit = (e) => {
     e.preventDefault()
     const userinfo = this.context.state.loggedUser
-    console.log('ejfjfjfjfjfdjfjdjfdjf',userinfo)
+    console.log('ejfjfjfjfjfdjfjdjfdjf', userinfo)
    
    
     const fd = new FormData()
     for (const key in this.state.updateUser){fd.append(key, this.state.updateUser[key])}
   
       AUTH_SERVICE.edit(fd)
-        .then(res=> console.log(res))
+        .then(res => {
+          console.log(res)
+          this.context.logUser(res.data.user);
+          this.props.history.push('/profile')
+        })
         .catch(e => console.log(e));
    
-    this.props.history.push('/profile')
   };
 
-handleFile = (e) =>{
-  this.setState({[e.target.name]: e.target.files[0]})
- 
-console.log(e.target.files[0])
-}
+// handleFile = (e) =>{
+//   this.setState({[e.target.name]: e.target.files[0]})
+// console.log(e.target.files[0])
+// console.log(e.target.name)
+// }
 
 //update de cosas xd
   render() {
  
-let user = this.state.updateUser
+let {updateUser} = this.state
 
-console.log('djdjdjdjdjdjdjdjddjjddj',user)
+console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
 
     return (
       <div
@@ -70,8 +80,8 @@ console.log('djdjdjdjdjdjdjdjddjjddj',user)
             <Form.Item>
             <label>Photo Upload</label>
             <br></br>
-              <img style={{width: '20vw'}} src={user.img} alt="profilepicture"/>
-              <input name="img" type="file" onChange={this.handleFile} />
+             
+              <input name="img" type="file" onChange={this.handleInput} />
             </Form.Item>
             <Form.Item>
             <label>Main Game</label>
