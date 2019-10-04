@@ -53,11 +53,11 @@ export default class OneTeam extends Component {
         const team = this.state.teams
         
         if(this.state.teams.length===0) return <p>Loading...</p>
-        console.log('el team del render: ', team.members)
+        console.log('el team del render: ', team.members[0].userName)
         
         return (
             <div>
-            
+            <div>
              <Header>
          
         
@@ -83,12 +83,29 @@ export default class OneTeam extends Component {
     style={{ width: 240 }}
     cover={<img alt="example" src={team.img} />}
   >
-    <Meta title={team.name} description={team.members} />
+    <Meta title={team.name} description={team.name} />
     <Meta description={team.description} />
   
     
   </Card>
   <Button onClick={this.sendMail}>Send Request</Button>
+  </div>
+  <div>
+  <h2>members</h2>
+{team.members.map((member)=>(
+    <Card
+    hoverable
+    style={{ width: 240 }}
+    cover={<img alt="example" src={member.img} />}
+  >
+    <Meta title={member.userName} description={member.game} />
+   
+  
+    
+  </Card>
+))}
+
+  </div>
             </div>
         )
     }

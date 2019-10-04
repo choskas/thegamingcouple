@@ -16,10 +16,7 @@ const userSchema = new Schema(
       type: String,
       default: 'https://www.uic.mx/posgrados/files/2018/05/default-user.png'
     },  
-    team: {
-      ref: 'Team',
-      type: Schema.Types.ObjectId
-    },
+   
     fb: String
   },
   {

@@ -87,7 +87,9 @@ router.get('/eventregister', isAuth, (req,res,next)=>{
 })
 
 router.get('/teamsall', (req,res,next)=>{
-  Team.find().populate('owner')
+  Team.find()
+  .populate('owner')
+  
   .then((team) => { console.log(team)
     res.status(200).json({ team })
   })
@@ -122,7 +124,8 @@ router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>
 
 router.get('/teamregister/:id', (req,res,next)=>{
   Team.findById(req.params.id)
-  .populate('owner')
+  .populate('owner members')
+  
   .then((team) => res.status(200).json({ team }))
   .catch((err) => res.status(err).json({ err }))
 })
