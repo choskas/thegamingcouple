@@ -53,6 +53,7 @@ export default class Profile extends Component {
   render() {
     const {user} = this.state
     const {teams} = this.state
+    console.log(teams)
     return (
         <div>
         <Header>

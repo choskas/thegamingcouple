@@ -12,7 +12,8 @@ const {Header} = Layout
 export default class OneTeam extends Component {
     state= {
         teams: [],
-        user: {}
+        user: {},
+        members: []
     }
     
     
@@ -27,7 +28,7 @@ export default class OneTeam extends Component {
         axios
             .get(`http://localhost:3000/api/teamregister/${id}`)
             .then(res => {
-                console.log('laressss', res)
+              
                 this.setState({
                     teams: res.data.team
                     
@@ -50,11 +51,13 @@ export default class OneTeam extends Component {
   
     render() {
         const team = this.state.teams
+        
         if(this.state.teams.length===0) return <p>Loading...</p>
-        console.log('el team del render: ', team)
+        console.log('el team del render: ', team.members)
         
         return (
             <div>
+            
              <Header>
          
         
@@ -82,6 +85,8 @@ export default class OneTeam extends Component {
   >
     <Meta title={team.name} description={team.members} />
     <Meta description={team.description} />
+  
+    
   </Card>
   <Button onClick={this.sendMail}>Send Request</Button>
             </div>

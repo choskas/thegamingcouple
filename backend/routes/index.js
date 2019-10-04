@@ -115,7 +115,7 @@ router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>
   }
   console.log('sdfsdfsdfdfelelele',req.body)
   const {name, img, description, members} = req.body
- Team.findById(req.params.id)
+ Team.findByIdAndUpdate(req.params.id, {...req.body})
   
   .then((team) =>{ 
     for (const key in req.body){
@@ -130,6 +130,7 @@ router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>
    
     
     )})
+  .then(team => res.status(200).json({ team }))
   .catch((err) => res.status(err).json({ err }))
 })
 
@@ -143,6 +144,12 @@ router.get('/teamregister/:id', (req,res,next)=>{
 router.get('/oneuserteams', isAuth, (req,res,next)=>{
   Team.find({owner: req.user.id})
   .then((teams)=> res.status(200).json({teams}))
+  .catch((err)=> res.status(500).json({err}))
+})
+
+router.get('/getmembers/:id', (req,res,next) =>{
+  Team.find(req.params.id).populate('members')
+  .then((members)=> res.status(200).json({members}))
   .catch((err)=> res.status(500).json({err}))
 })
 
