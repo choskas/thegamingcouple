@@ -27,7 +27,13 @@ const AUTH_SERVICE = {
   },
   oneTeam : async (id)=>{
     return await SERVICE.get(`/teamregister/${id}`)
+  },
+  addOneMember: async (id, form)=>{
+    console.log('los auth services: ', id, form)
+    return await SERVICE.post(`/addmember/${id}`, form)
+    
   }
+  
 
   
 };

@@ -113,23 +113,9 @@ router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>
   if(req.file){
     req.body.img = req.file.secure_url
   }
-  console.log('sdfsdfsdfdfelelele',req.body)
-  const {name, img, description, members} = req.body
+
  Team.findByIdAndUpdate(req.params.id, {...req.body})
   
-  .then((team) =>{ 
-    for (const key in req.body){
-      team[key] = req.body[key]
-    }
-    console.log('<<<<<<<<<<<<<<<<', team)
-   
-    
-    team.save()
-    .then(team => res.status(200).json({ team })
-    .catch(err => console.log(err))
-   
-    
-    )})
   .then(team => res.status(200).json({ team }))
   .catch((err) => res.status(err).json({ err }))
 })
@@ -156,5 +142,35 @@ router.get('/getmembers/:id', (req,res,next) =>{
 function isAuth(req,res,next){
   req.isAuthenticated() ? next() : res.status(401).json({msg: 'Log in first'})
 }
+
+
+router.post('/addmember/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+ 
+  // const {name, img, description, members} = req.body
+//  Team.findById(req.params.id)
+console.log('lo del body',req.body)
+
+
+  Team.findByIdAndUpdate(req.params.id, {members: req.body})
+ 
+  //hacer el req.body.map
+  // .then((team) =>{ 
+  //   for (const key in req.body){
+  //     team[key] = req.body[key]
+  //   }
+    
+  //   console.log('el body en la promise: ', req.body)
+   
+    
+  //   team.save()
+  //   .then(team => res.status(200).json({ team })
+  //   .catch(err => console.log(err))
+   
+    
+  //   )})
+  .then(team => res.status(200).json({ team }))
+  .catch((err) => res.status(err).json({ err }))
+
+})
 
 module.exports = router;

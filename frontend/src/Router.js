@@ -10,6 +10,7 @@ import CreateTeam from './components/CreateTeam'
 import EditTeam from './components/EditTeam';
 import OneTeam from './components/OneTeam';
 import OneEvent from './components/OneEvent';
+import AddMember from './components/AddMember';
 
 
 const Router = (user) => (
@@ -25,6 +26,7 @@ const Router = (user) => (
       <Route exact path='/editteam/:id' component={EditTeam}/>
       <Route exact path='/teamregister/:id' component={OneTeam}/>
       <Route exact path= '/oneevent' component={OneEvent}/>
+      <Route exact path='/addmember/:id' component={AddMember}/>
     </Switch>
   </BrowserRouter>
 );

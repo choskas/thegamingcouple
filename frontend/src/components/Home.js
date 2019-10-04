@@ -59,7 +59,7 @@ class Home extends Component {
             <Header>
          
         
-              <div className="logo"></div>
+              <div className="logo">AQUIVAELLOGO</div> 
               
               <Menu
                 theme="dark"
