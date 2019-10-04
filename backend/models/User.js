@@ -15,8 +15,7 @@ const userSchema = new Schema(
     img:{
       type: String,
       default: 'https://www.uic.mx/posgrados/files/2018/05/default-user.png'
-    },  
-   
+    },
     fb: String
   },
   {

@@ -48,6 +48,41 @@ class Home extends Component {
       })
     }
 
+    navBar = ()=>{
+      if(!localStorage.user){
+        return(  <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key="1"><Link to ='/'>Home</Link></Menu.Item>
+          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
+          <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
+          <Menu.Item key="4"> <Link to='/login'>Log in</Link>
+      </Menu.Item>
+         
+        </Menu>
+
+        )
+      } else {
+        return(
+          <Menu
+          theme="dark"
+          mode="horizontal"
+          defaultSelectedKeys={['2']}
+          style={{ lineHeight: '64px' }}
+        >
+          <Menu.Item key="1"><Link to ='/'>Home</Link></Menu.Item>
+          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
+          <Menu.Item key="4"> <Link to='/logout'>Log out</Link>
+      </Menu.Item>
+         
+        </Menu>
+        )
+      }
+    }
+
     render() {
         const gamesArr = this.state.games
         const teamsArr = this.state.teams
@@ -58,9 +93,9 @@ class Home extends Component {
            
             <Header>
          
-        
-              <div className="logo">AQUIVAELLOGO</div> 
-              
+            <Link to='/'>
+             <img style={{width: 'auto', height: '65px', float: 'left'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img> 
+             </Link>
               <Menu
                 theme="dark"
                 mode="horizontal"
