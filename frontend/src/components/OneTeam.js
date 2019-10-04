@@ -51,7 +51,7 @@ export default class OneTeam extends Component {
     render() {
         const team = this.state.teams
         if(this.state.teams.length===0) return <p>Loading...</p>
-        console.log(team)
+        console.log('el team del render: ', team)
         
         return (
             <div>

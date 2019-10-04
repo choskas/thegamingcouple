@@ -16,6 +16,13 @@ router.get('/', (req, res, next) => {
   res.status(200).json({ msg: 'all things' });
 });
 
+router.get('/allusers', (req,res,next)=>{
+  User.find()
+  .then((user) => res.status(201).json({ user }))
+  .catch((err) => console.log(err))
+})
+
+
 router.post('/signup', (req,res,next) =>{
   User.register(req.body, req.body.password)
   .then((user) => res.status(201).json({ user }))
@@ -107,14 +114,28 @@ router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>
     req.body.img = req.file.secure_url
   }
   console.log('sdfsdfsdfdfelelele',req.body)
-  Team.findByIdAndUpdate(req.params.id, {...req.body}, {new: true})
+  const {name, img, description, members} = req.body
+ Team.findById(req.params.id)
   
-  .then((team) => res.status(200).json({ team }))
+  .then((team) =>{ 
+    for (const key in req.body){
+      team[key] = req.body[key]
+    }
+    console.log('<<<<<<<<<<<<<<<<', team)
+   
+    
+    team.save()
+    .then(team => res.status(200).json({ team })
+    .catch(err => console.log(err))
+   
+    
+    )})
   .catch((err) => res.status(err).json({ err }))
 })
 
 router.get('/teamregister/:id', (req,res,next)=>{
-  Team.findById(req.params.id).populate('owner')
+  Team.findById(req.params.id)
+  .populate('owner')
   .then((team) => res.status(200).json({ team }))
   .catch((err) => res.status(err).json({ err }))
 })
