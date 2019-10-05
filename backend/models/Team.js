@@ -15,10 +15,8 @@ const teamSchema = new Schema(
       ref: 'User',
       type: Schema.Types.ObjectId
     },
-    game: {
-      ref: 'Game',
-      type: Schema.Types.ObjectId
-    },
+    game: String,
+    searching: String,
     members:[{
       ref: 'User',
       type: Schema.Types.ObjectId

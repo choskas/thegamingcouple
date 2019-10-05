@@ -24,6 +24,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
+     
         axios
             
             .get('http://localhost:3000/api/gamesall')
@@ -38,7 +39,7 @@ class Home extends Component {
                 console.log(err)
             })
         axios
-        .get('http://localhost:3000/api/teamsall')
+        .get('http://localhost:3000/api/hometeams')
         .then(res => {
           this.setState({
               teams: res.data.team
@@ -83,7 +84,7 @@ class Home extends Component {
 
             </Layout>
             
-            <Carousel autoplay>
+            <Carousel style={{marginBottom: '10vh'}} autoplay>
     
        {gamesArr.map((oneGame, i) => (
         <div key={i} style={{alignContent: 'center'}}>
@@ -93,40 +94,40 @@ class Home extends Component {
    
   </Carousel>
   <h2 style={{color: 'white'}}>Games</h2>
-  <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>   
+  <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>   
   {gamesArr.map((oneGame, i) => (
-   
+   <Link to={`/game/${oneGame._id}`}>
   <Card key={i}
     hoverable
-    style={{ width: 240, borderColor: '#09d3ac', background: 'black' }}
+    style={{ width: '30vw', borderColor: '#09d3ac', background: 'black' }}
     cover={<img alt="example" src={oneGame.img} style={{height: '20vh'}}  />}
   >
     <Meta key={i} title= {oneGame.name} description={oneGame.playgame} />
   
   </Card> 
-
+</Link>
    ))}
    </div>
 
    <h2 style={{color: 'white'}}>Recruitment</h2>
-   <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+   <div  style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>
             {teamsArr.map((oneTeam, i) => (
          
-                <Card key={i}
+                <Link to={`/teamregister/${oneTeam._id}`}>      <Card key={i}
     hoverable
-    style={{ width: 240, borderColor: '#09d3ac', background: 'black', color: 'white' }}
+    style={{  borderColor: '#09d3ac', background: 'black', color: 'white', width: '20vw' }}
     cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
   >
     <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.playgame} />
   
-  </Card> 
+  </Card> </Link>
  
            
             ))}
             </div>
             
 <h2 style={{color: 'white'}}>Events</h2>
-<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '10vh'}}>
 {eventsArr.map((oneEvent, i) => (
          
          <Card key={i}
@@ -142,7 +143,7 @@ cover={<img alt="example" src={oneEvent.img} style={{ height: '20vh'}}  />}
      ))}
 </div>
   <h2 style={{color: 'white'}}>Live Stream</h2>
-<duv><TwitchStream channelName='riotgames' autoPlay muted/></duv>
+<div><TwitchStream channelName='riotgames' autoPlay muted/></div>
             
 
   <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>

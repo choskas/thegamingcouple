@@ -62,6 +62,7 @@ class NavBar extends React.Component {
         >
           <Menu.Item key="4"><Link to ='/'>Home</Link></Menu.Item>
           <Menu.Item key="1"><Link to='/team'>Teams</Link></Menu.Item>
+          <Menu.Item key="5"><Link to='/profile'>Profile</Link></Menu.Item>
           <Menu.Item key="3" onClick={this.context.logOut}><Link to= "/">Logout</Link></Menu.Item>
      
          

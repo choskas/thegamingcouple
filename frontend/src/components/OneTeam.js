@@ -39,7 +39,7 @@ export default class OneTeam extends Component {
             .catch(err => {
                 console.log(err)
             })
-      
+            if (!localStorage.user) return this.props.history.push('/login');
 
     }
 

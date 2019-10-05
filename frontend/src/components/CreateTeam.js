@@ -96,7 +96,29 @@ class CreateTeam extends Component {
                 placeholder="Description"
               />
             </Form.Item>
-           
+            <Form.Item>
+            <label>Game</label>
+            <br></br>
+              <Input
+                style={{width: '30vw'}}
+                onChange={this.handleInput}
+                type="text"
+                name="game"
+                placeholder="League of Legends, CS: GO, Overwatch"
+              />
+            </Form.Item>
+            <Form.Item>
+            <label>Searching for</label>
+            <br></br>
+              <Input
+                style={{width: '30vw'}}
+                onChange={this.handleInput}
+                type="text"
+                name="searching"
+                placeholder="ADC, MID, TOP, JG, TANK, DPS"
+              />
+            </Form.Item>
+            
             <Form.Item>
            <Input style={{width: '20vw'}}  type="submit"  value="Signup" /> 
             </Form.Item>

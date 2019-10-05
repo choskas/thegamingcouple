@@ -9,12 +9,7 @@ const uploadCloud = require ('../config/cloudinary')
 
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-  Game.find()
-  Event.find().limit(5)
-  Team.find().limit(5)
-  res.status(200).json({ msg: 'all things' });
-});
+
 
 router.get('/allusers', (req,res,next)=>{
   User.find()
@@ -55,8 +50,8 @@ router.post('/edit', isAuth, uploadCloud.single('img'), (req,res,next)=>{
 })
 
 
-router.get('/game', (req,res,next) =>{
-  Game.findById(req.params._id)
+router.get('/game/:id', (req,res,next) =>{
+  Game.findById(req.params.id)
   .then((game) => res.status(200).json({ game }))
   .catch((err) => console.log(err));
 })
@@ -89,6 +84,17 @@ router.get('/eventregister', isAuth, (req,res,next)=>{
 router.get('/teamsall', (req,res,next)=>{
   Team.find()
   .populate('owner')
+  
+  .then((team) => { console.log(team)
+    res.status(200).json({ team })
+  })
+  .catch((err) => console.log(err));
+})
+
+router.get('/hometeams', (req,res,next)=>{
+  Team.find()
+  .populate('owner')
+  .limit(4)
   
   .then((team) => { console.log(team)
     res.status(200).json({ team })
