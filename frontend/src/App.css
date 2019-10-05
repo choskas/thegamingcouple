@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+.ant-menu-item-active{
+  color: turquoise
+}
+
+.pto{
+  background-color: #09d3ac
+}

@@ -4,6 +4,7 @@ import { Card, Input, Form, Button } from 'antd';
 import { MyContext } from '../context/index';
 import AUTH_SERVICE from '../services/auth';
 import axios from 'axios'
+import NavBar from './NavBar'
 let url = "http://localhost:3000/api/edit";
 
 
@@ -68,6 +69,8 @@ let {updateUser} = this.state
 console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
 
     return (
+      <div>
+      <NavBar {...this.props} />
       <div
         style={{
           display: 'flex',
@@ -78,6 +81,7 @@ console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
           height: '100vh'
         }}
       >
+
        
         <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
         <div>
@@ -120,6 +124,7 @@ console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
           </div>
           <div style={{display:'flex', flexDirection:'column', alignContent: 'right', textAlign: 'center', marginLeft: '10vw', justifyContent:'space-between'}}></div>
         </Card>
+      </div>
       </div>
     );
   }

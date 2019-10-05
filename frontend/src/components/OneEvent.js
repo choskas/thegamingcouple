@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactMapboxGl, { Layer, Feature, Popup } from "react-mapbox-gl";
+import NavBar from './NavBar'
 export default class OneEvent extends Component {
 
  
@@ -10,6 +11,7 @@ export default class OneEvent extends Component {
           });
         return (
             <>
+            <NavBar {...this.props} />
               <Map
   style="mapbox://styles/mapbox/streets-v9"
   containerStyle={{

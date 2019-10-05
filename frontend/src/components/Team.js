@@ -3,6 +3,7 @@ import axios from 'axios'
 import { Card, Icon, Avatar, Layout, Menu} from 'antd';
 import {Link} from 'react-router-dom'
 import { MyContext } from '../context';
+import NavBar from './NavBar'
 
 const {Header} = Layout
 const {Meta} = Card
@@ -43,26 +44,7 @@ state= {
         
         return (
             <div>
-                      <Header>
-         
-        
-         <div className="logo"></div>
-         
-         <Menu
-           theme="dark"
-           mode="horizontal"
-           defaultSelectedKeys={['2']}
-           style={{ lineHeight: '64px' }}
-         >
-           <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-           <Menu.Item key="2"><Link to= '/team'>Teams</Link></Menu.Item>
-           <Menu.Item key="3">Logout</Menu.Item>
-           <Menu.Item key="4"> <Link to= '/profile'>Profile</Link>
-       </Menu.Item>
-          
-         </Menu>
-         
-       </Header>
+  <NavBar {...this.props} />
             <h1>Teams</h1>
                 {teamsArr.map((oneTeam, i) => {
                     return (

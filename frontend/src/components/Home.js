@@ -8,10 +8,12 @@ import {
     Link
 } from 'react-router-dom'
 import axios from 'axios'
+import NavBar from './NavBar'
 import {Layout, Menu, Carousel, Card, Icon, Avatar} from 'antd'
 import {TwitchStream} from 'react-twitch-stream'
 const {Header, Footer} = Layout
 const {Meta} = Card
+
 class Home extends Component {
 
     state = {
@@ -41,59 +43,44 @@ class Home extends Component {
               teams: res.data.team
           
           })
-          //console.log(res.data.game[0].name)
+          ///eventsall
       })
       .catch(err => {
           console.log(err)
       })
+      axios
+      .get('http://localhost:3000/api/eventsall')
+      .then(res => {
+        this.setState({
+            events: res.data.event
+        
+        })
+        ///eventsall
+    })
+    .catch(err => {
+        console.log(err)
+    })
     }
 
-    navBar = ()=>{
-      if(!localStorage.user){
-        return(  <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px' }}
-        >
-          <Menu.Item key="1"><Link to ='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
-          <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
-          <Menu.Item key="4"> <Link to='/login'>Log in</Link>
-      </Menu.Item>
-         
-        </Menu>
-
-        )
-      } else {
-        return(
-          <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px' }}
-        >
-          <Menu.Item key="1"><Link to ='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
-          <Menu.Item key="4"> <Link to='/logout'>Log out</Link>
-      </Menu.Item>
-         
-        </Menu>
-        )
-      }
-    }
+    
 
     render() {
         const gamesArr = this.state.games
         const teamsArr = this.state.teams
+        const eventsArr = this.state.events
+        
         console.log(teamsArr)
+        
+
         return ( 
             <div>
+            {(this.localStorage)? console.log(0):console.log("choskas putooooo")}
             <Layout className="layout">
            
-            <Header>
-         
-            <Link to='/'>
+
+            <NavBar {...this.props} />
+
+            {/* <Link to='/'>
              <img style={{width: 'auto', height: '65px', float: 'left'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img> 
              </Link>
               <Menu
@@ -102,15 +89,16 @@ class Home extends Component {
                 defaultSelectedKeys={['2']}
                 style={{ lineHeight: '64px' }}
               >
+              
                 <Menu.Item key="1">Home</Menu.Item>
                 <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
                 <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
                 <Menu.Item key="4"> <Link to='/login'>Log in</Link>
             </Menu.Item>
                
-              </Menu>
+              </Menu> */}
               
-            </Header>
+         
             </Layout>
             
             <Carousel autoplay>
@@ -156,25 +144,19 @@ class Home extends Component {
             
 <h2>Events</h2>
 
-<Card
-    style={{ width: 300 }}
-    cover={
-      <img
-        alt="example"
-        src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
-      />
-    }
-    actions={[
-    
-      <Icon type="ellipsis" key="ellipsis" />,
-    ]}
-  >
-    <Meta
-      avatar={<Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />}
-      title="Card title"
-      description="This is the description"
-    />
-  </Card>,
+{eventsArr.map((oneEvent, i) => (
+         
+         <Card key={i}
+hoverable
+
+cover={<img alt="example" src={oneEvent.img} style={{ height: '20vh' , width: '20vw'}}  />}
+>
+<Meta key={i} title= {oneEvent.name} description={oneEvent.playgame} />
+
+</Card> 
+
+     
+     ))}
 
   <h2>Live Stream</h2>
 <duv><TwitchStream channelName='riotgames' autoPlay muted/></duv>

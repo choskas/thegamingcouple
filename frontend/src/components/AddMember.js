@@ -3,6 +3,7 @@ import { Card, Menu, Input, Form, Layout, Button } from 'antd';
 import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
+import NavBar from './NavBar'
 
 const {Header} = Layout
 
@@ -100,26 +101,7 @@ class AddMember extends Component {
        console.log('eluseserererer',filteredUsers)
     return (
         <div>
-            <Header>
-         
-        
-         <div className="logo"></div>
-         
-         <Menu
-           theme="dark"
-           mode="horizontal"
-           defaultSelectedKeys={['2']}
-           style={{ lineHeight: '64px' }}
-         >
-           <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-           <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
-           <Menu.Item key="3"><Link to='/profile'>Profile</Link></Menu.Item>
-           <Menu.Item key="4"> 
-       </Menu.Item>
-          
-         </Menu>
-         
-       </Header> 
+        <NavBar {...this.props} />
        
       <div
         style={{

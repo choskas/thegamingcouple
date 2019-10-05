@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import {
     MyContext
 } from '../context/index'
+import NavBar from './NavBar'
 
 const {Meta} = Card
 const {Header} = Layout
@@ -58,26 +59,7 @@ export default class OneTeam extends Component {
         return (
             <div>
             <div>
-             <Header>
-         
-        
-         <div className="logo"></div>
-         
-         <Menu
-           theme="dark"
-           mode="horizontal"
-           defaultSelectedKeys={['2']}
-           style={{ lineHeight: '64px' }}
-         >
-           <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-           <Menu.Item key="2"><Link to= '/team'>Teams</Link></Menu.Item>
-           <Menu.Item key="3">Logout</Menu.Item>
-           <Menu.Item key="4"> <Link to= '/profile'>Profile</Link>
-       </Menu.Item>
-          
-         </Menu>
-         
-       </Header>
+            <NavBar {...this.props} />
                  <Card
     hoverable
     style={{ width: 240 }}

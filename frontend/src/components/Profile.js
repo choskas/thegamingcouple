@@ -3,6 +3,7 @@ import { MyContext } from '../context';
 import {  Button, Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom'
 import AUTH_SERVICE from '../services/auth';
+import NavBar from './NavBar'
 
 const {Header} = Layout
 
@@ -56,26 +57,7 @@ export default class Profile extends Component {
     console.log(teams)
     return (
         <div>
-        <Header>
-         
-        
-        <div className="logo"></div>
-        
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px' }}
-        >
-          <Menu.Item key="1"><Link to='/'>Home</Link></Menu.Item>
-          <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
-          <Menu.Item key="3" onClick={this.context.logOut}><Link to= "/login">Logout</Link></Menu.Item>
-          <Menu.Item key="4"> 
-      </Menu.Item>
-         
-        </Menu>
-        
-      </Header> 
+       <NavBar {...this.props} />
       <div style={{display: 'flex', marginLeft: '10%', marginTop: '10%', width: '70vw', height: '60vh', flexDirection: 'column', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
       
        <div style={{marginTop: '15vh', marginLeft: '10vw'}}>
