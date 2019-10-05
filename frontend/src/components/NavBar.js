@@ -23,19 +23,20 @@ class NavBar extends React.Component {
   render(){
     if(!localStorage.user) {
       return(
-          <Header
+         
+          <Header 
           style={{ background: 'black'}}
           >
           <Link to='/'>
         <img style={{width: 'auto', height: '60px', float: 'left', marginRight: '20px'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img>
         </Link>
-        <Menu
+        <Menu 
           theme="dark"
           mode="horizontal"
           defaultSelectedKeys={['2']}
-          style={{ lineHeight: '64px', background: 'black' }}
+          style={{ lineHeight: '64px', background: 'black'}}
         >
-          <Menu.Item key="5" style={{}} class="pto"><Link to ='/'>Home</Link></Menu.Item>
+          <Menu.Item key="5" ><Link to ='/'>Home</Link></Menu.Item>
           <Menu.Item key="1"><Link to='/team'>Teams</Link></Menu.Item>
           <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
           <Menu.Item key="4"> <Link to='/login'>Log in</Link></Menu.Item>
@@ -43,6 +44,7 @@ class NavBar extends React.Component {
          
         </Menu>
         </Header>
+   
       )
     } else {
       return (

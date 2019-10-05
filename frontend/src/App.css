@@ -20,11 +20,55 @@
 .App-link {
   color: #09d3ac;
 }
-
-.ant-menu-item-active{
-  color: turquoise
+.ant-layout-header {
+  height: 68px !important;
+  padding: 0 50px 50px 0;
+  line-height: 64px;
+  background: #0029;
+  border-bottom: 2px solid turquoise;
 }
 
-.pto{
-  background-color: #09d3ac
+menu.style {
+  line-height: 64px;
+  background: black;
+  border-bottom: 2px solid turquoise;
+  height: 64px;
+}
+
+.home-cards{
+  background: #09d3ac
+}
+
+.ant-card-meta-detail > div:not(:last-child) {
+  margin-bottom: 8px;
+  color: white;
+}
+
+.ant-card-meta-description {
+  color: white !important;
+}
+
+.todoelhome{
+  background: black
+}
+
+/* .ant-card-bordered {
+  
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid turquoise;
+  height: 30vh;
+  background: black;
+} */
+
+
+.ant-card-meta-title {
+  overflow: hidden;
+  
+  font-weight: 500;
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: white !important;
 }

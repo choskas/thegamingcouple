@@ -7,6 +7,7 @@ import {
 import {
     Link
 } from 'react-router-dom'
+import '../App.css'
 import axios from 'axios'
 import NavBar from './NavBar'
 import {Layout, Menu, Carousel, Card, Icon, Avatar} from 'antd'
@@ -73,49 +74,31 @@ class Home extends Component {
         
 
         return ( 
-            <div>
+            <div style={{backgroundColor: 'black'}} class='todoelhome'>
             {(this.localStorage)? console.log(0):console.log("choskas putooooo")}
             <Layout className="layout">
            
 
             <NavBar {...this.props} />
 
-            {/* <Link to='/'>
-             <img style={{width: 'auto', height: '65px', float: 'left'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img> 
-             </Link>
-              <Menu
-                theme="dark"
-                mode="horizontal"
-                defaultSelectedKeys={['2']}
-                style={{ lineHeight: '64px' }}
-              >
-              
-                <Menu.Item key="1">Home</Menu.Item>
-                <Menu.Item key="2"><Link to='/team'>Teams</Link></Menu.Item>
-                <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
-                <Menu.Item key="4"> <Link to='/login'>Log in</Link>
-            </Menu.Item>
-               
-              </Menu> */}
-              
-         
             </Layout>
             
             <Carousel autoplay>
     
        {gamesArr.map((oneGame, i) => (
         <div key={i} style={{alignContent: 'center'}}>
-                <img style={{width: '95%', height:'65vh'}} key={i} src={oneGame.img} alt="imgs"/></div>
+                <img style={{width: '100%', height:'65vh'}} key={i} src={oneGame.img} alt="imgs"/></div>
                 ))}
     
    
   </Carousel>
+  <h2 style={{color: 'white'}}>Games</h2>
   <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>   
   {gamesArr.map((oneGame, i) => (
    
   <Card key={i}
     hoverable
-    style={{ width: 240 }}
+    style={{ width: 240, borderColor: '#09d3ac', background: 'black' }}
     cover={<img alt="example" src={oneGame.img} style={{height: '20vh'}}  />}
   >
     <Meta key={i} title= {oneGame.name} description={oneGame.playgame} />
@@ -125,40 +108,40 @@ class Home extends Component {
    ))}
    </div>
 
-   <h2>Recruitment</h2>
-   <Carousel autoplay>
+   <h2 style={{color: 'white'}}>Recruitment</h2>
+   <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
             {teamsArr.map((oneTeam, i) => (
          
                 <Card key={i}
     hoverable
-  
-    cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' , width: '20vw'}}  />}
+    style={{ width: 240, borderColor: '#09d3ac', background: 'black', color: 'white' }}
+    cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
   >
-    <Meta key={i} title= {oneTeam.name} description={oneTeam.playgame} />
+    <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.playgame} />
   
   </Card> 
  
-            
+           
             ))}
-            </Carousel>   
+            </div>
             
-<h2>Events</h2>
-
+<h2 style={{color: 'white'}}>Events</h2>
+<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
 {eventsArr.map((oneEvent, i) => (
          
          <Card key={i}
 hoverable
-
-cover={<img alt="example" src={oneEvent.img} style={{ height: '20vh' , width: '20vw'}}  />}
+style={{ width: 240, borderColor: '#09d3ac', background: 'black', color: 'white' }}
+cover={<img alt="example" src={oneEvent.img} style={{ height: '20vh'}}  />}
 >
-<Meta key={i} title= {oneEvent.name} description={oneEvent.playgame} />
+<Meta key={i} title= {oneEvent.name} description={oneEvent.address} />
 
 </Card> 
 
      
      ))}
-
-  <h2>Live Stream</h2>
+</div>
+  <h2 style={{color: 'white'}}>Live Stream</h2>
 <duv><TwitchStream channelName='riotgames' autoPlay muted/></duv>
             
 
