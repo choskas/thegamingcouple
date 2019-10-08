@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Input, Form, Button } from 'antd';
+import { Card, Input, Form, Button, Layout } from 'antd';
 import { MyContext } from '../context/index';
 import AUTH_SERVICE from '../services/auth';
 import axios from 'axios'
 import NavBar from './NavBar'
+const {Footer} = Layout
+
 let url = "http://localhost:3000/api/edit";
 
 
@@ -69,7 +71,7 @@ let {updateUser} = this.state
 console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
 
     return (
-      <div>
+      <div style={{backgroundColor: 'black'}}>
       <NavBar {...this.props} />
       <div
         style={{
@@ -83,18 +85,18 @@ console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
       >
 
        
-        <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
+        <Card style={{ width: '80vw', height: '70vh', backgroundColor: 'black', color: 'white',   boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', backgroundSize: 'cover'  }}>
         <div>
         <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Edit Profile</p>
           <Form onSubmit={this.onSubmit} encType="multipart/form-data">
             <Form.Item>
-            <label>Photo Upload</label>
+            <label style={{color: 'white'}}>Photo Upload</label>
             <br></br>
              
               <input name="img" type="file" onChange={this.handleInput} />
             </Form.Item>
             <Form.Item>
-            <label>Main Game</label>
+            <label style={{color: 'white'}}>Main Game</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -105,7 +107,7 @@ console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
               />
             </Form.Item>
             <Form.Item>
-            <label>Email</label>
+            <label style={{color: 'white'}}>Email</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -125,6 +127,7 @@ console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
           <div style={{display:'flex', flexDirection:'column', alignContent: 'right', textAlign: 'center', marginLeft: '10vw', justifyContent:'space-between'}}></div>
         </Card>
       </div>
+      <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
       </div>
     );
   }

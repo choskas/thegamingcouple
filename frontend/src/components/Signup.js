@@ -4,7 +4,7 @@ import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
 
-const {Header} = Layout
+const {Header, Footer} = Layout
 
 class Signup extends Component {
   state = {
@@ -114,6 +114,7 @@ class Signup extends Component {
  
         </Card>
       </div>
+      <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
       </div>
     );
   }

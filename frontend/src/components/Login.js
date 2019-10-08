@@ -5,7 +5,7 @@ import { MyContext } from '../context';
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
 
-const {Header} = Layout
+const {Header, Footer} = Layout
 class Login extends Component {
   state = {
     user: {}
@@ -94,6 +94,7 @@ class Login extends Component {
         </div>
        
       </div>
+      <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
       </div>
     );
   }

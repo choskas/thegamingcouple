@@ -40,8 +40,8 @@ class NavBar extends React.Component {
           <Menu.Item key="1"><Link to='/team'>Teams</Link></Menu.Item>
           <Menu.Item key="3"><Link to='/signup'>Sign Up</Link></Menu.Item>
           <Menu.Item key="4"> <Link to='/login'>Log in</Link></Menu.Item>
-      
-         
+          
+        
         </Menu>
         </Header>
    
@@ -62,10 +62,11 @@ class NavBar extends React.Component {
         >
           <Menu.Item key="4"><Link to ='/'>Home</Link></Menu.Item>
           <Menu.Item key="1"><Link to='/team'>Teams</Link></Menu.Item>
-          <Menu.Item key="5"><Link to='/profile'>Profile</Link></Menu.Item>
+          <Menu.Item key="8"><Link to='/allevents'>Events</Link></Menu.Item>
           <Menu.Item key="3" onClick={this.context.logOut}><Link to= "/">Logout</Link></Menu.Item>
+          <Menu.Item style={{float: 'right', width: 'auto', height: '60px'}} key="7"><Link to='/profile'> <img style={{width: '60px', objectFit: 'cover', height: '60px', borderRadius:'50%'}} src= {JSON.parse(localStorage.user).img} alt='profile img' /> </Link></Menu.Item>
+          <Menu.Item style={{float: 'right'}} key="6"><Link to='/profile'>{JSON.parse(localStorage.user).userName}</Link></Menu.Item>
      
-         
         </Menu>
         </Header>
       )

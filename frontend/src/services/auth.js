@@ -30,8 +30,10 @@ const AUTH_SERVICE = {
   },
   addOneMember: async (id, form)=>{
     console.log('los auth services: ', id, form)
-    return await SERVICE.post(`/addmember/${id}`, form)
-    
+    return await SERVICE.post(`/addmember/${id}`, form)   
+  },
+  deleteTeam: async (id) =>{
+    return await SERVICE.delete(`/deleteteam/${id}`)
   }
   
 

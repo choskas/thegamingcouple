@@ -4,7 +4,7 @@ import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
 
-const {Header} = Layout
+const {Header, Footer} = Layout
 
 class EditTeam extends Component {
     state = {
@@ -47,13 +47,20 @@ class EditTeam extends Component {
        
       };
     
-
+      deleteInput = () => {
+        AUTH_SERVICE.deleteTeam(this.props.match.params.id)
+        .then(res =>{
+          console.log('team deleted', res)
+          this.props.history.push('/profile')
+        })
+        .catch(e => console.log(e))
+      }
   
       render() {
         let {team} = this.state
         console.log('lascosas del team',team)
     return (
-        <div>
+        <div style={{backgroundColor: 'black'}}>
             <NavBar {...this.props} />
        
       <div
@@ -67,18 +74,18 @@ class EditTeam extends Component {
         }}
       >
        
-        <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
+        <Card style={{backgroundColor: 'black', color: 'white', width: '80vw', height: '80vh',   boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', backgroundSize: 'cover'  }}>
         <div style={{}}>
-        <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Create a Team</p>
+        <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Edit Team</p>
           <Form onSubmit={this.onSubmit}>
           <Form.Item>
-            <label>Team photo</label>
+            <label style={{color: 'white'}}>Team photo</label>
             <br></br>
               <img style={{width: '20vw'}} src={team.img} alt="teampicture"/>
               <input name="img" type="file" onChange={this.handleInput} />
             </Form.Item>
             <Form.Item>
-            <label>Team Name</label>
+            <label style={{color: 'white'}}>Team Name</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -89,7 +96,7 @@ class EditTeam extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Description</label>
+            <label style={{color: 'white'}}>Description</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -108,9 +115,12 @@ class EditTeam extends Component {
             
           </Form>
           </div>
- 
+       <div>
+         <Button type= 'danger' onClick={this.deleteInput} >Delete Team</Button>
+       </div>
         </Card>
       </div>
+      <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
       </div>
     );
   }

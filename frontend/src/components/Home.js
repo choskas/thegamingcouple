@@ -10,9 +10,9 @@ import {
 import '../App.css'
 import axios from 'axios'
 import NavBar from './NavBar'
-import {Layout, Menu, Carousel, Card, Icon, Avatar} from 'antd'
+import {Layout, Carousel, Card, Button, Icon} from 'antd'
 import {TwitchStream} from 'react-twitch-stream'
-const {Header, Footer} = Layout
+const {Footer} = Layout
 const {Meta} = Card
 
 class Home extends Component {
@@ -84,7 +84,7 @@ class Home extends Component {
 
             </Layout>
             
-            <Carousel style={{marginBottom: '10vh'}} autoplay>
+            <Carousel style={{marginBottom: '10vh', marginTop: '1vh'}} autoplay>
     
        {gamesArr.map((oneGame, i) => (
         <div key={i} style={{alignContent: 'center'}}>
@@ -94,28 +94,31 @@ class Home extends Component {
    
   </Carousel>
   <h2 style={{color: 'white'}}>Games</h2>
+  <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
   <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>   
   {gamesArr.map((oneGame, i) => (
    <Link to={`/game/${oneGame._id}`}>
   <Card key={i}
     hoverable
-    style={{ width: '30vw', borderColor: '#09d3ac', background: 'black' }}
-    cover={<img alt="example" src={oneGame.img} style={{height: '20vh'}}  />}
+    style={{ width: '30vw', borderColor: '#09d3ac', background: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh'}}
+    cover={<img alt="example" src={oneGame.img} style={{height: '35vh'}}  />}
   >
     <Meta key={i} title= {oneGame.name} description={oneGame.playgame} />
   
   </Card> 
 </Link>
    ))}
+  
    </div>
 
    <h2 style={{color: 'white'}}>Recruitment</h2>
+   <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
    <div  style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>
             {teamsArr.map((oneTeam, i) => (
          
                 <Link to={`/teamregister/${oneTeam._id}`}>      <Card key={i}
     hoverable
-    style={{  borderColor: '#09d3ac', background: 'black', color: 'white', width: '20vw' }}
+    style={{  borderColor: '#09d3ac', background: 'black', color: 'white', width: '20vw', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
     cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
   >
     <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.playgame} />
@@ -125,28 +128,40 @@ class Home extends Component {
            
             ))}
             </div>
+            <div style={{float: 'right', color: '#09d3ac', fontSize:'1.5rem'}}>
+            <Link to='/team'><Button type= 'dashed' style= {{backgroundColor: 'black', color: 'white'}}>View All</Button></Link>
+            </div>
             
 <h2 style={{color: 'white'}}>Events</h2>
+<hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '10vh'}}>
 {eventsArr.map((oneEvent, i) => (
          
-         <Card key={i}
+    <Link to={`/event/${oneEvent._id}`}>        <Card key={i}
 hoverable
-style={{ width: 240, borderColor: '#09d3ac', background: 'black', color: 'white' }}
+style={{ width: 240, borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
 cover={<img alt="example" src={oneEvent.img} style={{ height: '20vh'}}  />}
 >
 <Meta key={i} title= {oneEvent.name} description={oneEvent.address} />
-
-</Card> 
+<div style={{float: 'right', color: '#09d3ac', fontSize:'1.5rem'}}>
+       
+            </div>
+            
+</Card> </Link>
 
      
      ))}
 </div>
+      <div style={{float: 'right', color: '#09d3ac', fontSize:'1.5rem'}}>
+            <Link to='/allevents'><Button type= 'dashed' style= {{backgroundColor: 'black', color: 'white'}}>View All</Button></Link>
+            </div>
   <h2 style={{color: 'white'}}>Live Stream</h2>
-<div><TwitchStream channelName='riotgames' autoPlay muted/></div>
+  <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
+<div style={{width: '80vw', position: 'relative', marginLeft: '10vw', border: '2px solid #09d3ac', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '5vh', marginTop: '2vh'}}><TwitchStream channelName='riotgames' autoPlay muted/></div>
             
-
+<div>
   <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
+  </div>
             </div>
             
         )

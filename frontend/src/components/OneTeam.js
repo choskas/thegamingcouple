@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Menu, Card, Layout, Button } from 'antd';
+import { Menu, Avatar, Card, Layout, Button } from 'antd';
 import { Link } from 'react-router-dom'
 import {
     MyContext
@@ -8,7 +8,7 @@ import {
 import NavBar from './NavBar'
 
 const {Meta} = Card
-const {Header} = Layout
+const {Header, Footer} = Layout
 
 export default class OneTeam extends Component {
     state= {
@@ -54,30 +54,41 @@ export default class OneTeam extends Component {
         const team = this.state.teams
         
         if(this.state.teams.length===0) return <p>Loading...</p>
-        console.log('el team del render: ', team.members[0].userName)
-        
+    
+        console.log('<<<<<<<<<<<<<<<<<<<<<<<', team.owner.userName)
         return (
-            <div>
+            <div style={{backgroundColor: 'black', height: '100%'}}>
             <div>
             <NavBar {...this.props} />
-                 <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src={team.img} />}
-  >
-    <Meta title={team.name} description={team.name} />
-    <Meta description={team.description} />
-  
+            <div>
+  <Button onClick={this.sendMail} style={{float: 'left', margin: '1px solid #09d3ac'}}> <Link to='/'>Send Request</Link></Button>
+  </div>
+            <Card
+    style={{marginLeft: '20vw', width: '50vw', height: '40vw', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
+    cover={
+      <img
+        alt="example"
+        src={team.img}
+        style={{height: '50vh', width: '50vw', objectFit: 'cover', borderRadius: '1%'}}
+      />
+    }
     
+  >
+    <Meta
+      avatar={<Avatar src={team.owner.img} />}
+      title={team.name}
+      description={team.description}
+    />
   </Card>
-  <Button onClick={this.sendMail}>Send Request</Button>
+ 
   </div>
   <div>
-  <h2>members</h2>
+  <h2 style={{color: 'white'}}>Members</h2>
+  <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
 {team.members.map((member)=>(
     <Card
     hoverable
-    style={{ width: 240 }}
+    style={{ width: 240, backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '5vh' }}
     cover={<img alt="example" src={member.img} />}
   >
     <Meta title={member.userName} description={member.game} />
@@ -86,8 +97,9 @@ export default class OneTeam extends Component {
     
   </Card>
 ))}
-
+</div>
   </div>
+  <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
             </div>
         )
     }

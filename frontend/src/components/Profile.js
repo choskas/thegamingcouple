@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom'
 import AUTH_SERVICE from '../services/auth';
 import NavBar from './NavBar'
 
-const {Header} = Layout
+const {Header, Footer} = Layout
 
 
 
@@ -56,30 +56,35 @@ export default class Profile extends Component {
     const {teams} = this.state
     console.log(teams)
     return (
-        <div>
+        <div style={{backgroundColor: 'black', height: '100vw'}}>
        <NavBar {...this.props} />
-      <div style={{display: 'flex', marginLeft: '10%', marginTop: '10%', width: '70vw', height: '60vh', flexDirection: 'column', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
+      <div style={{display: 'flex', backgroundColor: 'black', justifyContent: 'space-around', color: 'white', marginTop: '2vh', marginLeft: '10%',  width: '70vw', height: '60vh', flexDirection: 'row', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
       
-       <div style={{marginTop: '15vh', marginLeft: '10vw'}}>
-       <h2>Username:</h2>
+       <div style={{ marginLeft: '10vw', marginRight: '5vw' }}>
+       <h2 style={{color: 'white'}}>Username:</h2>
        <p style={{fontSize: '1.3rem'}}>{user.userName}</p>
-       <h2>Email: </h2>
+       <h2 style={{color: 'white'}}>Email: </h2>
        <p style={{fontSize: '1.3rem'}}>{user.email}</p>
-       <h2>Your main game:</h2>
+       <h2 style={{color: 'white'}}>Your main game:</h2>
        <p style={{fontSize: '1.3rem'}}>{user.game}</p>
-       <h2>Image: </h2>
-       <img src={user.img} style={{width:"30vw"}} alt="profilephoto"/>
+      
        </div>
-     <Link to="/edit">  <Button type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Edit</Button> </Link>
-     <Link to="/team">  <Button type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Join a team</Button> </Link>
-     <Link to="/createteam">  <Button type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Create a Team</Button> </Link>
+       <div style={{display: 'flex', flexDirection: 'column'}}>
+      
+       <img src={user.img} style={{width:"20vw", height:'20vw', borderRadius:'50%', objectFit: 'cover', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac'}} alt="profilephoto"/>
+    
+     <Link to="/edit">  <Button type="primary" style={{width: '12vw', float: 'left', marginTop: '80px'}}>Edit Profile</Button> </Link>
+     <Link to="/team">  <Button type="primary" style={{width: '12vw', float: 'left', marginTop: '80px'}}>Join a team</Button> </Link>
+     <Link to="/createteam">  <Button type="primary" style={{width: '12vw', float: 'left', marginTop: '80px', overflow: 'hidden'}}>Create a Team</Button> </Link>
       {teams.map(team=>(
-        <div>
-        <Link to={`/editteam/${team._id}`}>  <Button  type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Edit Team {team.name}</Button> </Link>
-        <Link to={`/addmember/${team._id}`}>  <Button  type="primary" style={{width: '10vw', float: 'left', marginTop: '80px'}}>Add Member to: {team.name}</Button> </Link>
+        <div style={{display: 'flex', flexDirection: 'row'}} >
+        <Link to={`/editteam/${team._id}`}>  <Button  type="primary" style={{width: '15vw', float: 'left', marginTop: '80px', marginRight: '5vw', overflow: 'hidden'}}>Edit Team {team.name}</Button> </Link>
+        <Link to={`/addmember/${team._id}`}>  <Button   type="primary" style={{width: '20vw', float: 'left', marginTop: '80px', overflow: 'hidden'}}>Add Member to: {team.name}</Button> </Link>
         </div>
       ))}
       </div>
+      </div>
+      
       </div>
       
     );

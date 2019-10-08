@@ -4,6 +4,7 @@ import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import NavBar from './NavBar'
+import BoxAddMember from './BoxAddMember';
 
 const {Header} = Layout
 
@@ -11,7 +12,8 @@ class AddMember extends Component {
     state = {
         team: {members: []},
         user: {},
-        filteredUsers: []
+        filteredUsers: [],
+        buttonVisible: true
       };
     
       componentDidMount (){
@@ -81,10 +83,10 @@ class AddMember extends Component {
         console.log('userseached: ', filteredUsers)
       }
 
-      addMember= e => {
-        e.preventDefault()
-        const key = e.target.parentElement.getAttribute('index')
-        console.log('lakeryyyy', key)
+      addMember= key => {
+        // e.preventDefault()
+      
+     
         this.setState(prevState=>{
           const {team: {members}, filteredUsers}= prevState
           members.push(filteredUsers[key]._id)
@@ -100,7 +102,7 @@ class AddMember extends Component {
         console.log('elteeeanm', team)
        console.log('eluseserererer',filteredUsers)
     return (
-        <div>
+        <div style={{borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh'}}>
         <NavBar {...this.props} />
        
       <div
@@ -114,7 +116,7 @@ class AddMember extends Component {
         }}
       >
        
-        <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
+        <Card style={{ width: '80vw', height: '70vh',  borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh', backgroundSize: 'cover'  }}>
         <div style={{}}>
         <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Add member</p>
           <Form onSubmit={this.onSubmit}>
@@ -125,13 +127,10 @@ class AddMember extends Component {
             <Form.Item>
            <Input style={{width: '20vw'}}  type="submit"  value="Confirm Changes" /> 
             </Form.Item>
-<div>
+<div style={{display: 'flex', flexDirection: 'row'}}>
            {filteredUsers.map((user, index)=>(
-              <div key={index} index={index}>
-              <p>{user.email}</p>
-              <p>{user.userName}</p>
-              <button onClick={this.addMember}>boton por la berga</button>
-              </div>
+             <BoxAddMember index={index} handleAdd={this.addMember} user={user} />
+            
            ))}
            </div>
             

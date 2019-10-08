@@ -4,7 +4,7 @@ import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
 
-const {Header} = Layout
+const {Header, Footer} = Layout
 
 class CreateTeam extends Component {
     state = {
@@ -50,7 +50,7 @@ class CreateTeam extends Component {
         let {team} = this.state
     
     return (
-        <div>
+        <div style={{backgroundColor: 'black'}}>
           <NavBar {...this.props} />
        
       <div
@@ -60,22 +60,22 @@ class CreateTeam extends Component {
           justifyContent: 'center',
           flexDirection: 'column',
           width: '100vw',
-          height: '100vh'
+          height: '100%'
         }}
       >
        
-        <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
+        <Card style={{color: 'white', backgroundColor: 'black',  boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', width: '80vw', height: '100vh', marginBottom: '5vh', marginTop: '5vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
         <div style={{}}>
         <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Create a Team</p>
           <Form onSubmit={this.onSubmit}>
           <Form.Item>
-            <label>Team photo</label>
+            <label style={{color: 'white'}}>Team photo</label>
             <br></br>
               <img style={{width: '20vw'}} src={team.img} alt="teampicture"/>
               <input name="img" type="file" onChange={this.handleInput} />
             </Form.Item>
             <Form.Item>
-            <label>Team Name</label>
+            <label style={{color: 'white'}}>Team Name</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -86,7 +86,7 @@ class CreateTeam extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Description</label>
+            <label style={{color: 'white'}}>Description</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -97,7 +97,7 @@ class CreateTeam extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Game</label>
+            <label style={{color: 'white'}}>Game</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -108,7 +108,7 @@ class CreateTeam extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Searching for</label>
+            <label style={{color: 'white'}}>Searching for</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -120,13 +120,16 @@ class CreateTeam extends Component {
             </Form.Item>
             
             <Form.Item>
-           <Input style={{width: '20vw'}}  type="submit"  value="Signup" /> 
+           <Input style={{width: '20vw'}}  type="submit"  value="Create" /> 
             </Form.Item>
             
           </Form>
           </div>
  
         </Card>
+      </div>
+      <div>
+      <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
       </div>
       </div>
     );

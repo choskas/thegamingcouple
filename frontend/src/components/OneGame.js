@@ -8,7 +8,7 @@ import {
 import NavBar from './NavBar'
 
 const {Meta} = Card
-const {Header} = Layout
+const {Header, Footer} = Layout
 
 export default class OneGame extends Component {
     state= {
@@ -50,20 +50,20 @@ export default class OneGame extends Component {
         
         
         return (
-            <div>
+            <div style={{  background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '3vh' }}>
            
             <NavBar {...this.props} />
                 
-  
-  <div>
-  <h2>{games.name}</h2>
+  <div style={{display: 'flex', flexDirection: 'row',}}>
+  <div style={{ background: 'black', color: 'white', marginTop: '3vh', marginBottom: '3vh' }}>
+  <h2 style={{color: 'white'}}>{games.name}</h2>
 
     <Card
     hoverable
-    style={{ width: 240 }}
+    style={{ width: '40vw', borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh', marginLeft: '10vw'  }}
     cover={<img alt="example" src={games.img} />}
   >
-    <Meta title={games.playgame} description={games.description} />
+    <Meta title={<a href={games.playgame}>Play {games.name}</a>} description={games.description} />
    
   
     
@@ -71,9 +71,12 @@ export default class OneGame extends Component {
 
 
   </div>
+  <div><iframe style={{marginLeft: '5vw', marginTop: '30vh', width: '30vw', height: '30vh'}} width="600px" height="500px" src={games.video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+  <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
             </div>
         )
     }
 }
 
 OneGame.contextType = MyContext;
+

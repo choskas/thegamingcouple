@@ -10,8 +10,10 @@ const eventSchema = new Schema(
     img: {
       type: String
     },
+    imgHome: String,
     description: String,
     price: String,
+    getTickets: String,
     location: {
       type: {
         type: String,

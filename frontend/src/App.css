@@ -73,3 +73,25 @@ menu.style {
   color: white !important;
 }
 
+.ant-descriptions-item-content {
+  display: table-cell;
+  color: white !important;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.ant-descriptions-item-label {
+  color: white !important;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: nowrap;
+}
+.ant-card-actions {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  background: black;
+  border-top: 1px solid turquoise;
+  zoom: 1;
+}

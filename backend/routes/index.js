@@ -70,8 +70,10 @@ router.get('/eventsall', (req,res,next)=>{
   .catch((err) => console.log(err));
 })
 
-router.get('/event', (req,res,next)=>{
-  Event.findById(req.params._id)
+router.get('/event/:id', (req,res,next)=>{
+  Event.findById(req.params.id)
+  .then((event) => res.status(200).json({ event }))
+  .catch((err) => console.log(err));
 })
 
 router.get('/eventregister', isAuth, (req,res,next)=>{
@@ -140,6 +142,15 @@ router.get('/oneuserteams', isAuth, (req,res,next)=>{
   Team.find({owner: req.user.id})
   .then((teams)=> res.status(200).json({teams}))
   .catch((err)=> res.status(500).json({err}))
+})
+
+router.delete('/deleteteam/:id', isAuth, (req,res,next)=>{
+ 
+
+ Team.findByIdAndDelete(req.params.id)
+  
+  .then(team => res.status(200).json({ team }))
+  .catch((err) => res.status(err).json({ err }))
 })
 
 router.get('/getmembers/:id', (req,res,next) =>{
