@@ -69,7 +69,7 @@ class AddMember extends Component {
       };
     
       search = e => {
-       
+       if (e.target.value === '') return this.setState({filteredUsers:[]})
         const { value } = e.target
         const  {user}  = this.state
        const userone= user.map((oneUser)=>{
@@ -129,7 +129,7 @@ class AddMember extends Component {
             </Form.Item>
 <div style={{display: 'flex', flexDirection: 'row'}}>
            {filteredUsers.map((user, index)=>(
-             <BoxAddMember index={index} handleAdd={this.addMember} user={user} />
+             <BoxAddMember key={index} index={index} handleAdd={this.addMember} user={user} />
             
            ))}
            </div>

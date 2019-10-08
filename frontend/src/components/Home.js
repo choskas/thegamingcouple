@@ -86,13 +86,14 @@ class Home extends Component {
             
             <Carousel style={{marginBottom: '10vh', marginTop: '1vh'}} autoplay>
     
-       {gamesArr.map((oneGame, i) => (
+       {eventsArr.map((oneEvent, i) => (
         <div key={i} style={{alignContent: 'center'}}>
-                <img style={{width: '100%', height:'65vh'}} key={i} src={oneGame.img} alt="imgs"/></div>
+                <img style={{width: '100%', height:'65vh'}} key={i} src={oneEvent.imgHome} alt="imgs"/></div>
                 ))}
     
    
   </Carousel>
+  <h3 style={{color: 'white', textAlign: 'center'}}>sdsdsdsdsdsdsdsdsdsds</h3>
   <h2 style={{color: 'white'}}>Games</h2>
   <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
   <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>   
@@ -119,7 +120,7 @@ class Home extends Component {
                 <Link to={`/teamregister/${oneTeam._id}`}>      <Card key={i}
     hoverable
     style={{  borderColor: '#09d3ac', background: 'black', color: 'white', width: '20vw', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
-    cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
+    cover={<img alt="example" src={oneTeam.img} style={{ height: '30vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
   >
     <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.playgame} />
   

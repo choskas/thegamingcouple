@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Menu, Input, Form, Layout, Button } from 'antd';
+import { Card, Menu, Input, Form, Layout, Button, Icon } from 'antd';
 import AUTH_SERVICE from '../services/auth';
 import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
@@ -115,8 +115,8 @@ class EditTeam extends Component {
             
           </Form>
           </div>
-       <div>
-         <Button type= 'danger' onClick={this.deleteInput} >Delete Team</Button>
+       <div style={{float: 'right'}}>
+         <Button type= 'danger' onClick={this.deleteInput} ><Icon type="delete" /></Button>
        </div>
         </Card>
       </div>
