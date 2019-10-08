@@ -14,7 +14,7 @@ export default function BoxAddMember(props) {
     return (
 
               <div index={index} style={{marginRight: '2vw', borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh'}} >
-              <img src={user.img} style={{width: '10vw', height: 'auto'}}/>
+              <img alt="imgs" src={user.img} style={{width: '10vw', height: 'auto'}}/>
               <p>{user.userName}</p>
               {isVisible ? <button style={{borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh'}} onClick={handleButton}>Add</button> : undefined}
               </div>
@@ -23,9 +23,3 @@ export default function BoxAddMember(props) {
 }
 
 
-
-{/* <div key={index} index={index} style={{marginRight: '2vw', borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh'}} >
-<img src={user.img} style={{width: '10vw', height: 'auto'}}/>
-<p>{user.userName}</p>
-{this.state.buttonVisible ? <button style={{borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh'}} onClick={this.addMember}>Add</button> : undefined}
-</div> */}

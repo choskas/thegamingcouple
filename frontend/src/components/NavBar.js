@@ -1,18 +1,12 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import '../App.css'
-
 import {
     Link
 } from 'react-router-dom'
-import axios from 'axios'
-
-import {Layout, Menu, Carousel, Card, Icon, Avatar} from 'antd'
-import {TwitchStream} from 'react-twitch-stream'
-
+import {Layout, Menu} from 'antd'
 import { MyContext } from '../context';
-const {Header, Footer} = Layout
-const {Meta} = Card
+const {Header} = Layout
+
 
 
 
@@ -28,7 +22,7 @@ class NavBar extends React.Component {
           style={{ background: 'black'}}
           >
           <Link to='/'>
-        <img style={{width: 'auto', height: '60px', float: 'left', marginRight: '20px'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img>
+        <img alt="imgs" style={{width: 'auto', height: '60px', float: 'left', marginRight: '20px'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img>
         </Link>
         <Menu 
           theme="dark"
@@ -52,7 +46,7 @@ class NavBar extends React.Component {
         style={{ background: 'black'}}
         >
         <Link to='/'>
-      <img style={{width: 'auto', height: '60px', float: 'left'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img>
+      <img alt="imgs" style={{width: 'auto', height: '60px', float: 'left'}} src='/images/54516548_480886059109258_4540151525636308992_n.jpg'></img>
       </Link>
         <Menu
           theme="dark"

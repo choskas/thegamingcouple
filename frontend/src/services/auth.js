@@ -14,13 +14,13 @@ const AUTH_SERVICE = {
     return await SERVICE.get('/logout');
   },
   edit: async (form) =>{
-    return await SERVICE.post('/edit', form)
+    return await SERVICE.put('/edit', form)
   },
   createTeam: async (form) => {
     return await SERVICE.post('/createteam', form)
   },
   editTeam: async (form, id)=>{
-    return await SERVICE.post(`/editteam/${id}`, form)
+    return await SERVICE.put(`/editteam/${id}`, form)
   },
   allTeams: async () =>{
     return await SERVICE.get('/oneuserteams')
@@ -34,6 +34,9 @@ const AUTH_SERVICE = {
   },
   deleteTeam: async (id) =>{
     return await SERVICE.delete(`/deleteteam/${id}`)
+  },
+  createGame: async (form) =>{
+    return await SERVICE.post('/creategame', form)
   }
   
 

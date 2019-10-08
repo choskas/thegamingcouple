@@ -40,7 +40,7 @@ router.get('/profile', isAuth, (req,res,next) =>{
   .catch((err)=> res.status(500).json({err}))
 }) 
 
-router.post('/edit', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+router.put('/edit', isAuth, uploadCloud.single('img'), (req,res,next)=>{
   if(req.file){
     req.body.img = req.file.secure_url
   }
@@ -119,7 +119,7 @@ router.post('/createteam', isAuth, uploadCloud.single('img'), (req,res,next)=>{
   .catch((err)=> res.status(500).json({err}))
 })
 
-router.post('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+router.put('/editteam/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>{
   if(req.file){
     req.body.img = req.file.secure_url
   }
@@ -159,6 +159,17 @@ router.get('/getmembers/:id', (req,res,next) =>{
   .catch((err)=> res.status(500).json({err}))
 })
 
+
+router.post('/creategame', isAuth, uploadCloud.single('img'), (req,res,next)=>{
+
+  Game.create( {...req.body})
+  .then((event) =>res.status(200).json({event}))
+  .catch((err)=>  console.log(err))
+})
+
+
+
+
 function isAuth(req,res,next){
   req.isAuthenticated() ? next() : res.status(401).json({msg: 'Log in first'})
 }
@@ -166,31 +177,22 @@ function isAuth(req,res,next){
 
 router.post('/addmember/:id', isAuth, uploadCloud.single('img'), (req,res,next)=>{
  
-  // const {name, img, description, members} = req.body
-//  Team.findById(req.params.id)
-console.log('lo del body',req.body)
+  
 
 
   Team.findByIdAndUpdate(req.params.id, {members: req.body})
  
-  //hacer el req.body.map
-  // .then((team) =>{ 
-  //   for (const key in req.body){
-  //     team[key] = req.body[key]
-  //   }
-    
-  //   console.log('el body en la promise: ', req.body)
-   
-    
-  //   team.save()
-  //   .then(team => res.status(200).json({ team })
-  //   .catch(err => console.log(err))
-   
-    
-  //   )})
   .then(team => res.status(200).json({ team }))
   .catch((err) => res.status(err).json({ err }))
 
 })
+
+function checkAdmin(req, res, next){
+   if (req.user.role === 'admin'){
+     next()
+   } else {
+    res.status(401).json({msg: 'Log in as admin first'})
+   }
+}
 
 module.exports = router;

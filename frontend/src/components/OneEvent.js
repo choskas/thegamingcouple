@@ -21,9 +21,9 @@ componentDidMount() {
       let user = JSON.parse(localStorage.user)
       this.setState({user})
      }
-  console.log(this.props.match.params.id)
+  
   const id = this.props.match.params.id
-  console.log('elidddd', id)
+ 
   axios
       .get(`http://localhost:3000/api/event/${id}`)
       .then(res => {
@@ -31,7 +31,7 @@ componentDidMount() {
               events: res.data.event
           })
 
-          console.log('la dartewrfs', res.data)
+     
       })
       .catch(err => {
           console.log(err)
@@ -42,10 +42,7 @@ componentDidMount() {
 
     render() {
       const oneEvent = this.state.events
-      // let address
-      // if(!oneEvent.location === undefined) {
-      //   address = oneEvent.location.address
-      // } 
+      
         
       
       

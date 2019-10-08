@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Card, Icon, Avatar, Layout, Menu} from 'antd';
+import { Card, Icon, Avatar, Layout} from 'antd';
 import {Link} from 'react-router-dom'
 import { MyContext } from '../context';
 import NavBar from './NavBar'
 import '../App.css'
 
-const {Header, Footer} = Layout
+const { Footer} = Layout
 const {Meta} = Card
 
 export default class Team extends Component {
@@ -23,7 +23,7 @@ state= {
         let user = JSON.parse(localStorage.user)
         this.setState({user})
        }
-      console.log('pto logged: ', this.context.loggedUser)
+     
         axios
             
             .get('http://localhost:3000/api/teamsall')
@@ -66,7 +66,7 @@ state= {
     <Meta
       avatar={<Avatar src={oneTeam.owner.img} />}
       title={oneTeam.owner.userName}
-      description={oneTeam.description}
+      description={oneTeam.searching}
     />
   </Card>
                  ) })} 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Card, Menu, Input, Form, Layout } from 'antd';
+import { Card, Input, Form, Layout } from 'antd';
 import AUTH_SERVICE from '../services/auth';
 import { MyContext } from '../context';
-import { Link } from 'react-router-dom'
+
 import NavBar from './NavBar'
 
-const {Header, Footer} = Layout
+const {Footer} = Layout
 class Login extends Component {
   state = {
     user: {}
@@ -23,7 +23,11 @@ class Login extends Component {
     AUTH_SERVICE.login(this.state.user)
       .then((response) => {
         this.context.logUser(response.data.user);
+
         localStorage.setItem('user', JSON.stringify(response.data.user))
+        if (response.data.user.role === 'admin'){
+         return this.props.history.push('/admin')
+        } 
         this.props.history.push('/profile');
         console.log(response.data.user)
       })
@@ -47,9 +51,9 @@ class Login extends Component {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'row',
-          width: '100vw',
+          width: '100%',
           height: '100vh',
-         
+          backgroundColor: 'black'
         }}
       >
 
@@ -59,7 +63,7 @@ class Login extends Component {
          
         
        <div>
-        <Card style={{ width: '80vw', height: '70vh', color: 'white', backgroundColor: 'black', backgroundSize: 'cover'  }}>
+        <Card style={{boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', width: '80vw', height: '70vh', color: 'white', backgroundColor: 'black', backgroundSize: 'cover'  }}>
         <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Login</p>
         <div>
           <Form onSubmit={this.onSubmit} style={{marginTop:'20vh'}}>

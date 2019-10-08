@@ -1,13 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Card, Input, Form, Button, Layout } from 'antd';
 import { MyContext } from '../context/index';
 import AUTH_SERVICE from '../services/auth';
-import axios from 'axios'
 import NavBar from './NavBar'
 const {Footer} = Layout
 
-let url = "http://localhost:3000/api/edit";
+
 
 
 export default class ProfileEdit extends React.Component {
@@ -20,7 +18,7 @@ export default class ProfileEdit extends React.Component {
     //  console.log(this.state)
     if (localStorage.user) {
       let updateUser = JSON.parse(localStorage.user)
-      console.log('sdasdsd', updateUser)
+   
       this.setState({updateUser})
     }
   }
@@ -40,8 +38,8 @@ export default class ProfileEdit extends React.Component {
   
   onSubmit = (e) => {
     e.preventDefault()
-    const userinfo = this.state.updateUser
-    console.log('ejfjfjfjfjfdjfjdjfdjf', userinfo)
+
+  
    
    
     const fd = new FormData()
@@ -57,18 +55,12 @@ export default class ProfileEdit extends React.Component {
    
   };
 
-// handleFile = (e) =>{
-//   this.setState({[e.target.name]: e.target.files[0]})
-// console.log(e.target.files[0])
-// console.log(e.target.name)
-// }
 
-//update de cosas xd
   render() {
  
-let {updateUser} = this.state
 
-console.log('djdjdjdjdjdjdjdjddjjddj', updateUser.img)
+
+
 
     return (
       <div style={{backgroundColor: 'black'}}>

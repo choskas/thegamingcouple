@@ -10,7 +10,7 @@ import {
 import '../App.css'
 import axios from 'axios'
 import NavBar from './NavBar'
-import {Layout, Carousel, Card, Button, Icon} from 'antd'
+import {Layout, Carousel, Card, Button} from 'antd'
 import {TwitchStream} from 'react-twitch-stream'
 const {Footer} = Layout
 const {Meta} = Card
@@ -33,7 +33,7 @@ class Home extends Component {
                     games: res.data.game
                 
                 })
-                //console.log(res.data.game[0].name)
+             
             })
             .catch(err => {
                 console.log(err)
@@ -45,7 +45,7 @@ class Home extends Component {
               teams: res.data.team
           
           })
-          ///eventsall
+      
       })
       .catch(err => {
           console.log(err)
@@ -71,12 +71,10 @@ class Home extends Component {
         const teamsArr = this.state.teams
         const eventsArr = this.state.events
         
-        console.log(teamsArr)
-        
 
         return ( 
-            <div style={{backgroundColor: 'black'}} class='todoelhome'>
-            {(this.localStorage)? console.log(0):console.log("choskas putooooo")}
+            <div style={{backgroundColor: 'black'}} className='todoelhome'>
+            {(this.localStorage)? console.log(0):console.log("exist")}
             <Layout className="layout">
            
 
@@ -93,15 +91,17 @@ class Home extends Component {
     
    
   </Carousel>
-  <h3 style={{color: 'white', textAlign: 'center'}}>sdsdsdsdsdsdsdsdsdsds</h3>
+  <div style={{width: '70vw', marginLeft: '15vw'}}>
+  <h3 style={{color: 'white', textAlign: 'center', fontSize: '1.5rem'}}>Welcome to The Gaming Couple site. Here you can make your own team or join an existent team. Plus, you can check e-sports events  and even you can watch League of Legends Worlds on live stream!!</h3>
+  </div>
   <h2 style={{color: 'white'}}>Games</h2>
   <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
-  <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>   
+  <div style={{ flexWrap: 'wrap',  display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>   
   {gamesArr.map((oneGame, i) => (
    <Link to={`/game/${oneGame._id}`}>
   <Card key={i}
     hoverable
-    style={{ width: '30vw', borderColor: '#09d3ac', background: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh'}}
+    style={{ width: '20rem', borderColor: '#09d3ac', background: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh'}}
     cover={<img alt="example" src={oneGame.img} style={{height: '35vh'}}  />}
   >
     <Meta key={i} title= {oneGame.name} description={oneGame.playgame} />
@@ -114,13 +114,13 @@ class Home extends Component {
 
    <h2 style={{color: 'white'}}>Recruitment</h2>
    <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
-   <div  style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', width: '100%', marginBottom: '10vh'}}>
+   <div  style={{flexWrap: 'wrap', display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '10vh'}}>
             {teamsArr.map((oneTeam, i) => (
          
                 <Link to={`/teamregister/${oneTeam._id}`}>      <Card key={i}
     hoverable
-    style={{  borderColor: '#09d3ac', background: 'black', color: 'white', width: '20vw', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
-    cover={<img alt="example" src={oneTeam.img} style={{ height: '30vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
+    style={{ borderColor: '#09d3ac', background: 'black', color: 'white', width: '20rem', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
+    cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
   >
     <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.playgame} />
   
@@ -135,12 +135,12 @@ class Home extends Component {
             
 <h2 style={{color: 'white'}}>Events</h2>
 <hr style={{height: '1px', borderColor: '#09d3ac', backgroundColor: '#09d3ac'}}/>
-<div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '10vh'}}>
+<div style={{flexWrap: 'wrap',  display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '10vh'}}>
 {eventsArr.map((oneEvent, i) => (
          
     <Link to={`/event/${oneEvent._id}`}>        <Card key={i}
 hoverable
-style={{ width: 240, borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
+style={{ width: '15rem', borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
 cover={<img alt="example" src={oneEvent.img} style={{ height: '20vh'}}  />}
 >
 <Meta key={i} title= {oneEvent.name} description={oneEvent.address} />

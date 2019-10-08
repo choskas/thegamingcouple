@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Card, Menu, Input, Form, Layout, Button } from 'antd';
+import { Card, Input, Form} from 'antd';
 import AUTH_SERVICE from '../services/auth';
-import { Link } from 'react-router-dom'
+
 import axios from 'axios';
 import NavBar from './NavBar'
 import BoxAddMember from './BoxAddMember';
 
-const {Header} = Layout
+
 
 class AddMember extends Component {
     state = {
@@ -24,14 +24,13 @@ class AddMember extends Component {
               user: res.data.user
           
           })
-    console.log('user: ', res.data.user)
+
       })
       .catch(err => {
           console.log(err)
       })
         this.setState({team: this.state.team, user: this.state.user})
-        console.log(this.state)
-        console.log(this.state.user)
+     
       }
     
       handleInput = (e) => {
@@ -43,7 +42,7 @@ class AddMember extends Component {
         team[key] = e.target.value;
       }
         this.setState({ team });
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<',this.state.team)
+     
       };
     
       onSubmit = (e) => {
@@ -75,12 +74,11 @@ class AddMember extends Component {
        const userone= user.map((oneUser)=>{
          return oneUser
         })
-        console.log('oneuser: ', userone)
-        console.log('search: ',user)
+      
         const query = value.toLowerCase()
         const filteredUsers = userone.filter(user => user.userName.toLowerCase().includes(query))
         this.setState({ filteredUsers })
-        console.log('userseached: ', filteredUsers)
+   
       }
 
       addMember= key => {
@@ -90,7 +88,7 @@ class AddMember extends Component {
         this.setState(prevState=>{
           const {team: {members}, filteredUsers}= prevState
           members.push(filteredUsers[key]._id)
-          console.log('ptossss', key)
+        
           return {team: {members}}
           
         })
@@ -98,7 +96,7 @@ class AddMember extends Component {
       }
   
       render() {
-        let {team, user, filteredUsers} = this.state
+        let {team, filteredUsers} = this.state
         console.log('elteeeanm', team)
        console.log('eluseserererer',filteredUsers)
     return (

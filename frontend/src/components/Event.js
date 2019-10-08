@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Card, Icon, Avatar, Layout, Menu} from 'antd';
+import { Card, Icon, Layout} from 'antd';
 import {Link} from 'react-router-dom'
 import { MyContext } from '../context';
 import NavBar from './NavBar'
 import '../App.css'
 
-const {Header, Footer} = Layout
+const { Footer} = Layout
 const {Meta} = Card
 
 export default class Team extends Component {
@@ -32,7 +32,7 @@ state= {
                     events: res.data.event
 
                 })
-                console.log('djhdfhsdfshjdf',res.data.event)
+          
             })
             .catch(err => {
                 console.log(err)
@@ -42,7 +42,7 @@ state= {
     render() {
 
         const eventsArr = this.state.events
-        console.log(eventsArr)
+    
         return (
             <div style={{backgroundColor: 'black'}}>
   <NavBar {...this.props} />

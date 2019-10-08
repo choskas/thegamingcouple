@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { Card, Menu, Input, Form, Layout } from 'antd';
+import { Card, Input, Form, Layout } from 'antd';
 import AUTH_SERVICE from '../services/auth';
-import { Link } from 'react-router-dom'
+
 import NavBar from './NavBar'
 
-const {Header, Footer} = Layout
+const { Footer} = Layout
 
 class Signup extends Component {
   state = {
@@ -46,22 +46,23 @@ class Signup extends Component {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-          width: '100vw',
-          height: '100vh'
+          width: '100%',
+          height: '100vh',
+          backgroundColor: 'black'
         }}
       >
        
-        <Card style={{ width: '80vw', height: '70vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
+        <Card style={{overflow: 'auto', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', width: '80vw', height: '100vh',  backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'  }}>
         <div style={{}}>
-        <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Sign Up</p>
+        <p style={{color: 'white',fontSize: '3rem', marginLeft: '2vw'}}>Sign Up</p>
           <Form onSubmit={this.onSubmit}>
             <Form.Item>
-            <label>Email</label>
+            <label style={{color: 'white'}}>Email</label>
             <br></br>
               <Input onChange={this.handleInput} style={{width: '30vw'}} type="email" name="email" placeholder="Email" />
             </Form.Item>
             <Form.Item>
-            <label>User Name</label>
+            <label style={{color: 'white'}}>User Name</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -72,7 +73,7 @@ class Signup extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Facebook Name</label>
+            <label style={{color: 'white'}}>Facebook Name</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -83,7 +84,7 @@ class Signup extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Password</label>
+            <label style={{color: 'white'}}>Password</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}
@@ -94,7 +95,7 @@ class Signup extends Component {
               />
             </Form.Item>
             <Form.Item>
-            <label>Game you play</label>
+            <label style={{color: 'white'}}>Game you play</label>
             <br></br>
               <Input
                 style={{width: '30vw'}}

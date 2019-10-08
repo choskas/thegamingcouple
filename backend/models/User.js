@@ -16,8 +16,14 @@ const userSchema = new Schema(
       type: String,
       default: 'https://www.uic.mx/posgrados/files/2018/05/default-user.png'
     },
-    fb: String
+    fb: String,
+    role: {
+      type: String,
+      enum: ['admin', 'gamer'],
+      default: 'gamer'
+    },
   },
+ 
   {
     timestamps: true,
     versionKey: false

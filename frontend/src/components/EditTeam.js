@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Card, Menu, Input, Form, Layout, Button, Icon } from 'antd';
+import { Card, Input, Form, Layout, Button, Icon } from 'antd';
 import AUTH_SERVICE from '../services/auth';
-import { Link } from 'react-router-dom'
 import NavBar from './NavBar'
 
-const {Header, Footer} = Layout
+const { Footer} = Layout
 
 class EditTeam extends Component {
     state = {
@@ -36,7 +35,7 @@ class EditTeam extends Component {
         const fd = new FormData()
         for (const key in this.state.team){fd.append(key, this.state.team[key])
         if(key=== 'members'){fd.append(key, this.state.team[key].split(','))}}
-        console.log(this.props.match.params.id)
+    
           AUTH_SERVICE.editTeam(fd, this.props.match.params.id)
           
             .then(res => {
@@ -58,7 +57,7 @@ class EditTeam extends Component {
   
       render() {
         let {team} = this.state
-        console.log('lascosas del team',team)
+      
     return (
         <div style={{backgroundColor: 'black'}}>
             <NavBar {...this.props} />

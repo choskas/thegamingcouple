@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { Menu, Card, Layout, Button } from 'antd';
-import { Link } from 'react-router-dom'
+import { Card, Layout } from 'antd';
 import {
     MyContext
 } from '../context/index'
 import NavBar from './NavBar'
 
 const {Meta} = Card
-const {Header, Footer} = Layout
+const { Footer} = Layout
 
 export default class OneGame extends Component {
     state= {
@@ -71,7 +70,7 @@ export default class OneGame extends Component {
 
 
   </div>
-  <div><iframe style={{marginLeft: '5vw', marginTop: '30vh', width: '30vw', height: '30vh'}} width="600px" height="500px" src={games.video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+  <div><iframe title={games.name} style={{marginLeft: '5vw', marginTop: '30vh', width: '30vw', height: '30vh'}} width="600px" height="500px" src={games.video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
   <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
             </div>
         )

@@ -13,6 +13,9 @@ import OneEvent from './components/OneEvent';
 import AddMember from './components/AddMember';
 import OneGame from './components/OneGame';
 import Event from './components/Event'
+import Admin from './components/Admin';
+import CreateGame from './components/CreateGame';
+
 
 const Router = (user) => (
   <BrowserRouter>
@@ -30,6 +33,8 @@ const Router = (user) => (
       <Route exact path='/game/:id' component={OneGame}/>
       <Route exact path='/event/:id' component={OneEvent}/>
       <Route exact path='/allevents' component={Event}/>
+      <Route exact path='/admin' component={Admin}/>
+      <Route exact path='/creategame' component={CreateGame}/>
     </Switch>
   </BrowserRouter>
 );

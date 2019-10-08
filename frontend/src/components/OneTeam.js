@@ -23,9 +23,9 @@ export default class OneTeam extends Component {
             let user = JSON.parse(localStorage.user)
             this.setState({user})
            }
-        console.log(this.props.match.params.id)
+    
         const id = this.props.match.params.id
-        console.log('elidddd', id)
+     
         axios
             .get(`http://localhost:3000/api/teamregister/${id}`)
             .then(res => {
@@ -44,7 +44,7 @@ export default class OneTeam extends Component {
     }
 
     sendMail = ()=>{
-        console.log('el owennnnnnnnneerrrrrr',this.state.teams.owner.email)
+     
         axios
         .post('http://localhost:3000/api/mail/send',{email: this.state.teams.owner.email, message:`Hola, soy ${this.state.user.userName} quiero unirme a tu equipo, mis datos de contacto son: correo: ${this.state.user.email} o puedes encontrarme en facebook como: ${this.state.user.fb}`, subject: `${this.state.user.userName} quiere unirse a tu equipo!`})
 

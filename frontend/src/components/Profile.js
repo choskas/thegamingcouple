@@ -27,36 +27,27 @@ export default class Profile extends Component {
 
     if (localStorage.user) {
       let user = JSON.parse(localStorage.user)
-      console.log('sdasdsd', user)
+      
       this.setState({user})
      }
    if (!localStorage.user) return this.props.history.push('/login');
-   //////////////////////////////7777
-  
-///////////////////////////////////////////7
-    // const userinfo = this.context.state.loggedUser
-    // this.setState( userinfo );
-    // console.log('the user infoooo: ', userinfo)
-    
-    console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<',this.context.loggedUser)
+
+   
     AUTH_SERVICE.allTeams()
     .then(({data})=> this.setState({teams: data.teams}))
     .catch((err)=> console.log(err))
   }
 
   
-//   logout() {
-//     localStorage.clear();
-//     window.location.href = '/';
-// }
+
 
 
   render() {
     const {user} = this.state
     const {teams} = this.state
-    console.log(teams)
+    
     return (
-        <div style={{backgroundColor: 'black', height: '100vw'}}>
+        <div style={{backgroundColor: 'black', height: '100vh'}}>
        <NavBar {...this.props} />
       <div style={{display: 'flex', backgroundColor: 'black', justifyContent: 'space-around', color: 'white', marginTop: '2vh', marginLeft: '10%',  width: '70vw', height: '60vh', flexDirection: 'row', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
       
