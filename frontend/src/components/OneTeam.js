@@ -84,11 +84,11 @@ export default class OneTeam extends Component {
   </div>
   <div>
   <h2 style={{color: 'white'}}>Members</h2>
-  <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-around'}}>
+  <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
 {team.members.map((member)=>(
     <Card
     hoverable
-    style={{ width: '20%', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '5vh' }}
+    style={{ width: '20rem', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '5vh' }}
     cover={<img alt="example" src={member.img} />}
   >
     <Meta title={member.userName} description={member.game} />

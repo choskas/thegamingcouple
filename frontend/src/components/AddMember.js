@@ -56,7 +56,7 @@ class AddMember extends Component {
         // fd.set('members',this.state.team.members)
         // if(key=== 'members'){fd.append(key, this.state.team[key]}
         // console.log('el fd de on submit: ', fd)
-        console.log('sdjsdsdsdd', this.state.team.members)
+       
           AUTH_SERVICE.addOneMember(this.props.match.params.id, this.state.team.members)
           
             .then(res => {
