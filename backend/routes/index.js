@@ -69,6 +69,8 @@ router.get('/gamesall', (req,res,next) =>{
   .catch((err) => console.log(err));
 })
 
+///
+
 router.put('/editgame/:id', isAuth ,uploadCloud.single('img'), (req,res,next)=>{
   if(req.file){
     req.body.img = req.file.secure_url
