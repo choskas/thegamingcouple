@@ -86,7 +86,7 @@ const index = require('./routes/index');
 const mailRoute = require('./routes/mailRoute')
 
 app.use('/api', index);
-app.use('/api/mail', mailRoute)
+app.use('/api', mailRoute)
 
 
 module.exports = app;
