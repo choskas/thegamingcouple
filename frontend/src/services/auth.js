@@ -1,5 +1,5 @@
 import axios from 'axios';
-const baseURL = 'https://radiant-chamber-45794.herokuapp.com/api';
+const baseURL = 'https://thegamingcouple.herokuapp.com/api'
 
 const SERVICE = axios.create({ withCredentials: true, baseURL });
 
