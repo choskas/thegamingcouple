@@ -46,7 +46,7 @@ class CreateGame extends Component {
           AUTH_SERVICE.createGame(fd)
             .then(res => {
               console.log(res)
-              this.props.history.push('/')
+              this.props.history.push('/admin')
             })
             .catch(e => console.log(e));
        

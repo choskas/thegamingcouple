@@ -15,6 +15,7 @@ import OneGame from './components/OneGame';
 import Event from './components/Event'
 import Admin from './components/Admin';
 import CreateGame from './components/CreateGame';
+import EditGame from './components/EditGame';
 
 
 const Router = (user) => (
@@ -35,6 +36,7 @@ const Router = (user) => (
       <Route exact path='/allevents' component={Event}/>
       <Route exact path='/admin' component={Admin}/>
       <Route exact path='/creategame' component={CreateGame}/>
+      <Route exact path='/editgame/:id' component={EditGame}/>
     </Switch>
   </BrowserRouter>
 );

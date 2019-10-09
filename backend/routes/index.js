@@ -40,6 +40,12 @@ router.get('/profile', isAuth, (req,res,next) =>{
   .catch((err)=> res.status(500).json({err}))
 }) 
 
+router.delete('/deleteuser', isAuth, (req,res,next)=>{
+  User.findByIdAndDelete(req.user.id)
+  .then((user)=> req.status(200).json({user}))
+  .catch((err)=> res.status(500).json({err}))
+})
+
 router.put('/edit', isAuth, uploadCloud.single('img'), (req,res,next)=>{
   if(req.file){
     req.body.img = req.file.secure_url
@@ -63,6 +69,24 @@ router.get('/gamesall', (req,res,next) =>{
   .catch((err) => console.log(err));
 })
 
+router.put('/editgame/:id', isAuth ,uploadCloud.single('img'), (req,res,next)=>{
+  if(req.file){
+    req.body.img = req.file.secure_url
+  }
+  Game.findByIdAndUpdate(req.params.id, {...req.body})
+  
+  .then(game => res.status(200).json({ game }))
+  .catch((err) => res.status(err).json({ err }))
+})
+
+router.delete('/deletegame/:id', isAuth, (req,res,next)=>{
+ 
+
+  Game.findByIdAndDelete(req.params.id)
+   
+   .then(game => res.status(200).json({ game }))
+   .catch((err) => res.status(err).json({ err }))
+})
 
 router.get('/eventsall', (req,res,next)=>{
   Event.find()
@@ -161,7 +185,9 @@ router.get('/getmembers/:id', (req,res,next) =>{
 
 
 router.post('/creategame', isAuth, uploadCloud.single('img'), (req,res,next)=>{
-
+  if(req.file){
+    req.body.img = req.file.secure_url
+  }
   Game.create( {...req.body})
   .then((event) =>res.status(200).json({event}))
   .catch((err)=>  console.log(err))

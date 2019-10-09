@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ReactMapboxGl, { Layer, Feature, Popup } from "react-mapbox-gl";
 import NavBar from './NavBar'
+import AUTH_SERVICE from '../services/auth';
 import {Layout, Descriptions} from 'antd'
-import axios from 'axios'
+
 
 const {Footer} = Layout
 
@@ -24,8 +25,7 @@ componentDidMount() {
   
   const id = this.props.match.params.id
  
-  axios
-      .get(`http://localhost:3000/api/event/${id}`)
+  AUTH_SERVICE.oneEvent(id)
       .then(res => {
           this.setState({
               events: res.data.event

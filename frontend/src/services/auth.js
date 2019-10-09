@@ -16,6 +16,9 @@ const AUTH_SERVICE = {
   edit: async (form) =>{
     return await SERVICE.put('/edit', form)
   },
+  deleteUser: async ()=>{
+    return await SERVICE.delete('/deleteuser')
+  },
   createTeam: async (form) => {
     return await SERVICE.post('/createteam', form)
   },
@@ -37,8 +40,40 @@ const AUTH_SERVICE = {
   },
   createGame: async (form) =>{
     return await SERVICE.post('/creategame', form)
-  }
-  
+  },
+  allUsers: async()=>{
+    return await SERVICE.get('/allusers')
+  },
+  allEvents: async ()=>{
+    return await SERVICE.get('/eventsall')
+  },
+  gamesHome: async()=>{
+    return await SERVICE.get('/gamesall')
+  },
+  teamsHome: async()=>{
+    return await SERVICE.get('/hometeams')
+  },
+  oneEvent: async(id)=>{
+    return await SERVICE.get(`/event/${id}`)
+  },
+  oneGame: async(id)=>{
+    return await SERVICE.get(`/game/${id}`)
+  },
+  mail: async(sendmail)=>{
+    return await SERVICE.post('/mail/send', sendmail)
+  },
+  teamRegister: async(id)=>{
+    return await SERVICE.get(`/teamregister/${id}`)
+  },
+  teamsAll: async()=>{
+    return await SERVICE.get('/teamsall')
+  },
+  editGame: async (form, id)=>{
+    return await SERVICE.put(`/editgame/${id}`, form)
+  },
+  deleteGame: async (id) =>{
+    return await SERVICE.delete(`/deletegame/${id}`)
+  },
 
   
 };

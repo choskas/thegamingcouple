@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Card, Input, Form} from 'antd';
 import AUTH_SERVICE from '../services/auth';
-
-import axios from 'axios';
 import NavBar from './NavBar'
 import BoxAddMember from './BoxAddMember';
 
@@ -17,8 +15,7 @@ class AddMember extends Component {
       };
     
       componentDidMount (){
-        axios
-        .get('http://localhost:3000/api/allusers')
+       AUTH_SERVICE.allUsers()
         .then(res => {
           this.setState({
               user: res.data.user
@@ -125,9 +122,9 @@ class AddMember extends Component {
             <Form.Item>
            <Input style={{width: '20vw'}}  type="submit"  value="Confirm Changes" /> 
             </Form.Item>
-<div style={{display: 'flex', flexDirection: 'row'}}>
+<div style={{display: 'flex', flexDirection: 'row', background: 'black'}}>
            {filteredUsers.map((user, index)=>(
-             <BoxAddMember key={index} index={index} handleAdd={this.addMember} user={user} />
+             <BoxAddMember style={{background: 'black'}} key={index} index={index} handleAdd={this.addMember} user={user} />
             
            ))}
            </div>

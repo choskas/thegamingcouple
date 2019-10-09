@@ -8,10 +8,10 @@ import {
     Link
 } from 'react-router-dom'
 import '../App.css'
-import axios from 'axios'
 import NavBar from './NavBar'
 import {Layout, Carousel, Card, Button} from 'antd'
 import {TwitchStream} from 'react-twitch-stream'
+import AUTH_SERVICE from '../services/auth';
 const {Footer} = Layout
 const {Meta} = Card
 
@@ -25,9 +25,7 @@ class Home extends Component {
 
     componentDidMount() {
      
-        axios
-            
-            .get('http://localhost:3000/api/gamesall')
+        AUTH_SERVICE.gamesHome()
             .then(res => {
                 this.setState({
                     games: res.data.game
@@ -38,8 +36,7 @@ class Home extends Component {
             .catch(err => {
                 console.log(err)
             })
-        axios
-        .get('http://localhost:3000/api/hometeams')
+        AUTH_SERVICE.teamsHome()
         .then(res => {
           this.setState({
               teams: res.data.team
@@ -50,8 +47,7 @@ class Home extends Component {
       .catch(err => {
           console.log(err)
       })
-      axios
-      .get('http://localhost:3000/api/eventsall')
+     AUTH_SERVICE.allEvents()
       .then(res => {
         this.setState({
             events: res.data.event

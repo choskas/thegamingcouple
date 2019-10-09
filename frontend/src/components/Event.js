@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Card, Icon, Layout} from 'antd';
 import {Link} from 'react-router-dom'
 import { MyContext } from '../context';
 import NavBar from './NavBar'
 import '../App.css'
-
+import AUTH_SERVICE from '../services/auth';
 const { Footer} = Layout
 const {Meta} = Card
 
@@ -24,9 +23,7 @@ state= {
         this.setState({user})
        }
      
-        axios
-            
-            .get('http://localhost:3000/api/eventsall')
+       AUTH_SERVICE.allEvents()
             .then(res => {
                 this.setState({
                     events: res.data.event

@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+
 import { Card, Icon, Avatar, Layout} from 'antd';
 import {Link} from 'react-router-dom'
 import { MyContext } from '../context';
 import NavBar from './NavBar'
 import '../App.css'
+import AUTH_SERVICE from '../services/auth';
 
 const { Footer} = Layout
 const {Meta} = Card
@@ -24,9 +25,7 @@ state= {
         this.setState({user})
        }
      
-        axios
-            
-            .get('http://localhost:3000/api/teamsall')
+       AUTH_SERVICE.teamsAll()
             .then(res => {
                 this.setState({
                     teams: res.data.team
@@ -65,9 +64,10 @@ state= {
   >
     <Meta
       avatar={<Avatar src={oneTeam.owner.img} />}
-      title={oneTeam.owner.userName}
-      description={oneTeam.searching}
+      title={oneTeam.name}
+      description={`Game: ${oneTeam.game}`}
     />
+    <Meta title={`Searching for: ${oneTeam.searching}`}/>
   </Card>
                  ) })} 
                  </div>

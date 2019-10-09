@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import { Card, Layout } from 'antd';
 import {
     MyContext
 } from '../context/index'
+import AUTH_SERVICE from '../services/auth';
 import NavBar from './NavBar'
 
 const {Meta} = Card
@@ -22,9 +22,8 @@ export default class OneGame extends Component {
            }
         console.log(this.props.match.params.id)
         const id = this.props.match.params.id
-        console.log('elidddd', id)
-        axios
-            .get(`http://localhost:3000/api/game/${id}`)
+       
+       AUTH_SERVICE.oneGame(id)
             .then(res => {
               
                 this.setState({

@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-import axios from 'axios'
+import AUTH_SERVICE from '../services/auth';
 import { Icon, Avatar, Card, Layout, Button } from 'antd';
 import { Link } from 'react-router-dom'
 import {
     MyContext
 } from '../context/index'
 import NavBar from './NavBar'
+
 
 const {Meta} = Card
 const {Footer} = Layout
@@ -26,8 +27,7 @@ export default class OneTeam extends Component {
     
         const id = this.props.match.params.id
      
-        axios
-            .get(`http://localhost:3000/api/teamregister/${id}`)
+        AUTH_SERVICE.teamRegister(id)
             .then(res => {
               
                 this.setState({
@@ -44,9 +44,8 @@ export default class OneTeam extends Component {
     }
 
     sendMail = ()=>{
-     
-        axios
-        .post('http://localhost:3000/api/mail/send',{email: this.state.teams.owner.email, message:`Hola, soy ${this.state.user.userName} quiero unirme a tu equipo, mis datos de contacto son: correo: ${this.state.user.email} o puedes encontrarme en facebook como: ${this.state.user.fb}`, subject: `${this.state.user.userName} quiere unirse a tu equipo!`})
+    
+      AUTH_SERVICE.mail({email: this.state.teams.owner.email, message:`Hola, soy ${this.state.user.userName} quiero unirme a tu equipo, mis datos de contacto son: correo: ${this.state.user.email} o puedes encontrarme en facebook como: ${this.state.user.fb}`, subject: `${this.state.user.userName} quiere unirse a tu equipo!`})
 
     }
   
@@ -76,6 +75,12 @@ export default class OneTeam extends Component {
   >
     <Meta
       avatar={<Avatar src={team.owner.img} />}
+      title={`Leader: ${team.owner.userName}`}
+     
+      description={team.game}
+    />
+    <Meta
+      
       title={team.name}
       description={team.description}
     />
