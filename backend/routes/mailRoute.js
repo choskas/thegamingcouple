@@ -3,6 +3,6 @@ const router  = express.Router();
 
 const {sendMail} = require('../controllers/sendMail')
 
-router.post('/send', sendMail)
+router.post('/mail/send', sendMail)
 
 module.exports = router

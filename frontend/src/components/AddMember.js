@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Card, Input, Form} from 'antd';
+import { Card, Input, Form, Layout} from 'antd';
 import AUTH_SERVICE from '../services/auth';
 import NavBar from './NavBar'
 import BoxAddMember from './BoxAddMember';
 
 
-
+const {Footer} = Layout
 class AddMember extends Component {
     state = {
         team: {members: []},
@@ -97,7 +97,7 @@ class AddMember extends Component {
         console.log('elteeeanm', team)
        console.log('eluseserererer',filteredUsers)
     return (
-        <div style={{borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh'}}>
+        <div style={{borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac'}}>
         <NavBar {...this.props} />
        
       <div
@@ -106,7 +106,7 @@ class AddMember extends Component {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-          width: '100vw',
+          width: '100%',
           height: '100vh'
         }}
       >
@@ -134,6 +134,7 @@ class AddMember extends Component {
  
         </Card>
       </div>
+      <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
       </div>
     );
   }

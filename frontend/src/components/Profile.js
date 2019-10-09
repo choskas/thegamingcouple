@@ -4,6 +4,7 @@ import {  Button, Icon } from 'antd';
 import { Link } from 'react-router-dom'
 import AUTH_SERVICE from '../services/auth';
 import NavBar from './NavBar'
+import '../App.css'
 
 
 
@@ -54,7 +55,7 @@ export default class Profile extends Component {
     return (
         <div style={{backgroundColor: 'black', height: 'auto'}}>
        <NavBar {...this.props} />
-      <div style={{display: 'flex', backgroundColor: 'black', justifyContent: 'space-around', color: 'white', marginTop: '2vh', marginLeft: '10%',  width: '70vw', height: '100vh', flexDirection: 'row', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
+      <div className='profileDiv' style={{display: 'flex', backgroundColor: 'black', justifyContent: 'space-around', color: 'white', marginTop: '2vh', marginLeft: '10%',  width: '70vw', height: '100vh', flexDirection: 'row', backgroundImage: 'url("/image/oval-bg.png")', backgroundSize: 'cover'}}>
       
        <div style={{ marginLeft: '10vw', marginRight: '5vw' }}>
        <h2 style={{color: 'white'}}>Username:</h2>

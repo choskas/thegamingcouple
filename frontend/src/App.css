@@ -95,3 +95,43 @@ menu.style {
   border-top: 1px solid turquoise;
   zoom: 1;
 }
+
+@media  (max-width: 500px){
+  .onMobile{
+    display: block !important;
+    width: 100% !important;
+  }
+  .onMobileGame{
+    width: 80vw !important;
+  }
+  .onMobileGameVideo{
+    width: 80vw !important;
+  }
+  .onMobileTeamOwnerDiv{
+    display: flex !important;
+    flex-direction: column !important;
+    margin-left: 0px !important;
+    margin-top: 5vh !important;
+    
+  }
+  .onMobileTeamCardDiv{
+    width: 70vw !important;
+    height: 50vh !important;
+
+  }
+  .onMobileTeamCardImg{
+    height: 20vh !important;
+    width: 68vw !important;
+    margin-left: 0px !important;
+  }
+  .onMobileTeamCardMembers{
+    height: 40vh !important;
+    width: 60vw !important;
+  }
+  .onMobileTeamCardMembersImg{
+    height: 20vh !important;
+    width: 40vw !important;
+    margin-left: 10vw !important
+  }
+ 
+}

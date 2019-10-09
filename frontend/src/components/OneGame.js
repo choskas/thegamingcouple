@@ -5,7 +5,7 @@ import {
 } from '../context/index'
 import AUTH_SERVICE from '../services/auth';
 import NavBar from './NavBar'
-
+import '../App.css'
 const {Meta} = Card
 const { Footer} = Layout
 
@@ -48,15 +48,15 @@ export default class OneGame extends Component {
         
         
         return (
-            <div style={{  background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '3vh' }}>
+            <div style={{ background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '3vh' }}>
            
             <NavBar {...this.props} />
                 
-  <div style={{display: 'flex', flexDirection: 'row',}}>
-  <div style={{ background: 'black', color: 'white', marginTop: '3vh', marginBottom: '3vh' }}>
+  <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
+  <div  style={{ width: '50vw', background: 'black', color: 'white', marginTop: '3vh', marginBottom: '3vh' }}>
   <h2 style={{color: 'white'}}>{games.name}</h2>
 
-    <Card
+    <Card className='onMobileGame'
     hoverable
     style={{ width: '40vw', borderColor: '#09d3ac', background: 'black', color: 'white', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh', marginBottom: '3vh', marginLeft: '10vw'  }}
     cover={<img alt="example" src={games.img} />}
@@ -69,7 +69,8 @@ export default class OneGame extends Component {
 
 
   </div>
-  <div><iframe title={games.name} style={{marginLeft: '5vw', marginTop: '30vh', width: '30vw', height: '30vh'}} width="600px" height="500px" src={games.video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
+  
+  <div className='onMobile' style={{width: '30vw'}}><iframe className='onMobileGameVideo' title={games.name} style={{marginLeft: '5vw', marginTop: '10vh', width: '40vw', height: '30vh'}} width="600px" height="500px" src={games.video} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div></div>
   <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
             </div>
         )

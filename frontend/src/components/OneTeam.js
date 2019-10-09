@@ -6,7 +6,7 @@ import {
     MyContext
 } from '../context/index'
 import NavBar from './NavBar'
-
+import '../App.css'
 
 const {Meta} = Card
 const {Footer} = Layout
@@ -34,7 +34,7 @@ export default class OneTeam extends Component {
                     teams: res.data.team
                     
                 })
-                console.log('la dartewrfs', res.data)
+               
             })
             .catch(err => {
                 console.log(err)
@@ -54,7 +54,6 @@ export default class OneTeam extends Component {
         
         if(this.state.teams.length===0) return <p>Loading...</p>
     
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<', team.owner.userName)
         return (
             <div style={{backgroundColor: 'black', height: '100%'}}>
             <div>
@@ -62,13 +61,16 @@ export default class OneTeam extends Component {
             <div>
   <Button onClick={this.sendMail} style={{float: 'left', margin: '1px solid #09d3ac', background: 'black', color: '#09d3ac'}}> <Link to='/'><Icon style={{marginRight: '1vw'}} type="mail" />Send Request</Link></Button>
   </div>
-            <Card
+  <div className='onMobileTeamOwnerDiv'>
+  <div>
+            <Card className='onMobileTeamCardDiv'
     style={{marginLeft: '20vw', width: '50vw', height: '40vw', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
     cover={
       <img
+      className='onMobileTeamCardImg'
         alt="example"
         src={team.img}
-        style={{height: '30%', width: '30%', objectFit: 'cover', borderRadius: '1%', marginLeft: '30%'}}
+        style={{height: '50%', width: '50%', objectFit: 'cover', borderRadius: '1%', marginLeft: '25%'}}
       />
     }
     
@@ -85,16 +87,17 @@ export default class OneTeam extends Component {
       description={team.description}
     />
   </Card>
- 
+  
   </div>
   <div>
   <h2 style={{color: 'white'}}>Members</h2>
   <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
 {team.members.map((member)=>(
     <Card
+    className='onMobileTeamCardMembers'
     hoverable
     style={{ width: '20rem', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginBottom: '5vh' }}
-    cover={<img alt="example" src={member.img} />}
+    cover={<img className='onMobileTeamCardMembersImg' alt="example" src={member.img} />}
   >
     <Meta title={member.userName} description={member.game} />
    
@@ -102,6 +105,8 @@ export default class OneTeam extends Component {
     
   </Card>
 ))}
+</div>
+</div>
 </div>
   </div>
   <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>

@@ -24,7 +24,7 @@ class EditTeam extends Component {
         team[key] = e.target.value;
       }
         this.setState({ team });
-        console.log('<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<',this.state.team)
+        
       };
     
       onSubmit = (e) => {
@@ -73,7 +73,7 @@ class EditTeam extends Component {
         }}
       >
        
-        <Card style={{backgroundColor: 'black', color: 'white', width: '80vw', height: '80vh',   boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', backgroundSize: 'cover'  }}>
+        <Card style={{ overflow: 'auto', backgroundColor: 'black', color: 'white', width: '80vw', height: '80vh',   boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', backgroundSize: 'cover'  }}>
         <div style={{}}>
         <p style={{fontSize: '3rem', marginLeft: '2vw'}}>Edit Team</p>
           <Form onSubmit={this.onSubmit}>
