@@ -95,7 +95,7 @@ export default class ProfileEdit extends React.Component {
                 onChange={this.handleInput}
                 type="text"
                 name="game"
-                placeholder="Madrid, Barcelona, Miami, Paris, Berlin, Amsterdam, México, Sao Paulo"
+                placeholder="League of Legends, CS: GO, Overwatch"
               />
             </Form.Item>
             <Form.Item>
@@ -106,7 +106,7 @@ export default class ProfileEdit extends React.Component {
                 onChange={this.handleInput}
                 type="text"
                 name="email"
-                placeholder="WebDev, UX/UI, Data Analytics"
+                placeholder="YO@yo.com"
               />
             </Form.Item>
             <Form.Item>
