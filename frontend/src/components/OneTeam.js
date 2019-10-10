@@ -64,7 +64,7 @@ export default class OneTeam extends Component {
   <div className='onMobileTeamOwnerDiv'>
   <div>
             <Card className='onMobileTeamCardDiv'
-    style={{marginLeft: '20vw', width: '50vw', height: '40vw', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
+    style={{overflow: 'auto', marginLeft: '20vw', width: '50vw', height: '40vw', backgroundColor: 'black', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
     cover={
       <img
       className='onMobileTeamCardImg'

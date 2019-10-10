@@ -12,7 +12,7 @@ class EditTeam extends Component {
     
       componentDidMount (){
         this.setState({team: this.state.team})
-        console.log(this.state)
+       
       }
     
       handleInput = (e) => {

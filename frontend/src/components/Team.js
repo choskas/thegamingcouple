@@ -45,7 +45,7 @@ state= {
         return (
             <div style={{backgroundColor: 'black', width: '100%', height: '100vh'}}>
   <NavBar {...this.props} />
-  <div style={{backgroundColor: 'black', height: '100vh'}}>
+  <div style={{backgroundColor: 'black', height: '100'}}>
             <h1 style={{color: 'white'}}>Teams</h1>
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
                 {teamsArr.map((oneTeam, i) => {
