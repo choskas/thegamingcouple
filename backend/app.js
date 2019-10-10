@@ -30,7 +30,7 @@ const app = express();
 app.use(
   cors({
     credentials: true,
-    origin: ['https://fervent-brown-6ab976.netlify.com'] //https://fervent-brown-6ab976.netlify.com
+    origin: [process.env.NETIFLY_URL] //https://fervent-brown-6ab976.netlify.com
   })
 );
 
