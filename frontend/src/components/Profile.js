@@ -64,11 +64,11 @@ export default class Profile extends Component {
        <p style={{fontSize: '1.2rem'}}>{user.email}</p>
        <h2 style={{color: 'white'}}>Your main game:</h2>
        <p style={{fontSize: '1.2rem'}}>{user.game}</p>
-       <Button type='danger' onClick={this.deleteUser}>DELETE USER</Button>
-       <div style={{boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', overflow: 'auto', marginTop: '10vh'}}>
+       <Button type='danger' onClick={this.deleteUser}>SELF DESTRUCT</Button>
+       <div className='onMobileProfileTeams' style={{ boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', overflow: 'auto', marginTop: '10vh'}}>
        <h2 style={{color: 'white'}}>Your Teams: </h2>
        {teams.map((team, index)=>(
-        <div key={index} style={{display: 'flex', flexDirection: 'row'}} >
+        <div  key={index} style={{overflow: 'auto', display: 'flex', flexDirection: 'row'}} >
         <Link  to={`/editteam/${team._id}`}>  <Button  type="primary" style={{width: '15vw', float: 'left', marginTop: '80px', marginRight: '5vw', overflow: 'hidden'}}>Edit Team {team.name}</Button> </Link>
         <Link  to={`/addmember/${team._id}`}>  <Button   type="primary" style={{width: '20vw', float: 'left', marginTop: '80px', overflow: 'hidden'}}>Add Member to: {team.name}</Button> </Link>
         </div>

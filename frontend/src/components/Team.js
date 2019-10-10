@@ -31,7 +31,7 @@ state= {
                     teams: res.data.team
 
                 })
-                console.log('djhdfhsdfshjdf',res.data.team)
+                
             })
             .catch(err => {
                 console.log(err)
@@ -45,7 +45,7 @@ state= {
         return (
             <div style={{backgroundColor: 'black', width: '100%', height: '100vh'}}>
   <NavBar {...this.props} />
-  <div style={{backgroundColor: 'black', height: '100'}}>
+  <div style={{backgroundColor: 'black', height: '100vh'}}>
             <h1 style={{color: 'white'}}>Teams</h1>
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
                 {teamsArr.map((oneTeam, i) => {

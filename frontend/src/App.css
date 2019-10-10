@@ -133,5 +133,9 @@ menu.style {
     width: 40vw !important;
     margin-left: 10vw !important
   }
+  .onMobileProfileTeams{
+    overflow: auto !important;
+    height: 29vh;
+  }
  
 }
