@@ -116,9 +116,9 @@ class Home extends Component {
                 <Link to={`/teamregister/${oneTeam._id}`}>      <Card key={i}
     hoverable
     style={{ borderColor: '#09d3ac', background: 'black', color: 'white', width: '20rem', boxShadow: '0 4px 8px 0 white, 0 6px 20px 0 #09d3ac', marginTop: '3vh' }}
-    cover={<img alt="example" src={oneTeam.img} style={{ height: '20vh' ,  background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
+    cover={<img alt="example" src={oneTeam.img} style={{ background: 'black', alignContent: 'center', textAlign: 'center'}}  />}
   >
-    <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.playgame} />
+    <Meta key={i} style= {{color: 'white'}} title= {oneTeam.name} description={oneTeam.game} />
   
   </Card> </Link>
  
