@@ -59,7 +59,7 @@ export default class OneTeam extends Component {
             <div>
             <NavBar {...this.props} />
             <div>
-  <Button onClick={this.sendMail} style={{float: 'left', margin: '1px solid #09d3ac', background: 'black', color: '#09d3ac'}}> <Link to='/'><Icon style={{marginRight: '1vw'}} type="mail" />Send Request</Link></Button>
+  <Button className='onMobileSendButton' onClick={this.sendMail} style={{float: 'left', margin: '1px solid #09d3ac', background: 'black', color: '#09d3ac'}}> <Link to='/'><Icon style={{marginRight: '1vw'}} type="mail" />Send Request</Link></Button>
   </div>
   <div className='onMobileTeamOwnerDiv'>
   <div>

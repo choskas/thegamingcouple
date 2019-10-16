@@ -117,7 +117,8 @@ menu.style {
   .onMobileTeamCardDiv{
     width: 70vw !important;
     height: 50vh !important;
-
+    margin-bottom: 10vh;
+    margin-left: 0px !important;
   }
   .onMobileTeamCardImg{
     height: 20vh !important;
@@ -136,6 +137,17 @@ menu.style {
   .onMobileProfileTeams{
     overflow: auto !important;
     height: 29vh;
+  }
+  .onMobileTeamDiv{
+    background-color: black !important;
+    height: auto !important;
+  }
+  .onMobileSendButton{
+    width: 11vw;
+    float: left;
+    background: black;
+    color: rgb(9, 211, 172);
+    overflow: hidden;
   }
  
 }

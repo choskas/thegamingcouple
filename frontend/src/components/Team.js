@@ -45,7 +45,7 @@ state= {
         return (
             <div style={{backgroundColor: 'black', width: '100%', height: '100vh'}}>
   <NavBar {...this.props} />
-  <div style={{backgroundColor: 'black', height: '100vh'}}>
+  <div className='onMobileTeamDiv' style={{backgroundColor: 'black', height: '100vh'}}>
             <h1 style={{color: 'white'}}>Teams</h1>
             <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
                 {teamsArr.map((oneTeam, i) => {
@@ -73,7 +73,9 @@ state= {
                  ) })} 
                  </div>
                  </div>
+                 
                  <Footer style={{ textAlign: 'center' }}>The Gaming Couple ©2019 Created by Choskas</Footer>
+                
             </div>
         )
     }
