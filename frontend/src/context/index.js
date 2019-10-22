@@ -14,7 +14,6 @@ class MyProvider extends Component {
   };
 
   logOut = () => {
-    console.log('<<<<<<<<<<<estaaaaaaaaas mamadaaaaaaas')
     AUTH_SERVICE.logOut()
       .then((response) => {
         localStorage.clear()

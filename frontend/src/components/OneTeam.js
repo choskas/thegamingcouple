@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import AUTH_SERVICE from '../services/auth';
-import { Icon, Avatar, Card, Layout, Button } from 'antd';
+import { Icon, notification, Avatar, Card, Layout, Button } from 'antd';
 import { Link } from 'react-router-dom'
 import {
     MyContext
 } from '../context/index'
 import NavBar from './NavBar'
+import '../App.css'
 import '../App.css'
 
 const {Meta} = Card
@@ -46,8 +47,16 @@ export default class OneTeam extends Component {
     sendMail = ()=>{
     
       AUTH_SERVICE.mail({email: this.state.teams.owner.email, message:`Hola, soy ${this.state.user.userName} quiero unirme a tu equipo, mis datos de contacto son: correo: ${this.state.user.email} o puedes encontrarme en facebook como: ${this.state.user.fb}`, subject: `${this.state.user.userName} quiere unirse a tu equipo!`})
-
+      notification.open({
+        
+        message: 'Mail Sended',
+        description:
+          `Wait the answer of ${this.state.teams.owner.userName}  `,
+        icon: <Icon type="mail" style={{ color: '#09d3ac' }} />,
+      });
     }
+
+   
   
     render() {
         const team = this.state.teams
