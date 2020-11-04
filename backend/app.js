@@ -45,7 +45,9 @@ app.use(
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
       ttl: 24 * 6000 * 6000 
-    })
+    }),
+    secure: false,
+    sameSite: 'strict',
   })
 )
 
