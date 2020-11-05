@@ -29,8 +29,8 @@ const app = express();
 
 app.use(
   cors({
-    credentials: true,
-    origin: ['http://localhost:3001'] // process.env.NETIFLY_URL
+    credentials: false,
+    origin: [process.env.NETIFLY_URL] //  'http://localhost:3001'
   })
 );
 
@@ -47,9 +47,24 @@ app.use(
       ttl: 24 * 6000 * 6000 
     }),
     secure: false,
-    sameSite: 'strict',
   })
 )
+
+app.use(function (req, res, next) {
+
+  // Esto resuelve el pedo con los cors
+  res.setHeader('Access-Control-Allow-Origin', req.header('Origin'));
+
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+
+
+  res.setHeader('Access-Control-Allow-Credentials', true);
+
+
+  next();
+});
 
 //PAssport
 app.use(passport.initialize())
